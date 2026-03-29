@@ -1,19 +1,24 @@
 # ColonBench Eval
 
-`colon-bench-eval` is a compact public release repo for reproducing the main ColonBench benchmark numbers on the [Hugging Face dataset](https://huggingface.co/datasets/ajhamdi/colon-bench). It keeps the benchmark JSONs, canonical result files, plotting scripts, the Streamlit viewer, and runnable baselines for:
+<p align="center">
+  <a href="https://arxiv.org/abs/2603.25645"><img src="https://img.shields.io/badge/arXiv-2603.25645-b31b1b.svg" alt="arXiv"></a>
+  <a href="https://huggingface.co/datasets/ajhamdi/colon-bench"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow" alt="HF Dataset"></a>
+  <a href="https://abdullahamdi.com/colon-bench"><img src="https://img.shields.io/badge/Project-Page-blue" alt="Project Page"></a>
+  <a href="https://github.com/ajhamdi/colon-bench-eval"><img src="https://img.shields.io/github/stars/ajhamdi/colon-bench-eval?style=social" alt="GitHub Stars"></a>
+  <a href="https://github.com/ajhamdi/colon-bench-eval/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-CC--BY--4.0-green.svg" alt="License"></a>
+</p>
 
-- VQA on `prompted` and `unprompted` splits
-- Binary lesion classification
-- Detection + EdgeTAM-based segmentation
+**ColonBench** is a comprehensive, human-verified, multi-task video benchmark for colonoscopy understanding. It spans **14 lesion categories** (including polyps, ulcers, and bleeding), over **300,000 bounding boxes**, **213,000 segmentation masks**, and **133,000 words** of clinical descriptions.
 
-This release intentionally uses public naming:
+`colon-bench-eval` is a compact toolkit for reproducing the main ColonBench benchmark numbers. It ships benchmark JSONs, canonical result files, plotting scripts, an interactive Streamlit viewer, and runnable baselines for:
 
-- internal `easy` -> public `prompted`
-- internal `hard` -> public `unprompted`
+- **VQA** on `prompted` and `unprompted` splits
+- **Binary lesion classification**
+- **Detection** + **EdgeTAM-based segmentation**
+
+> **Naming:** the public release uses `prompted` / `unprompted` (internal names were `easy` / `hard`).
 
 ## Dataset Summary
-
-ColonBench is a human-verified multi-task colonoscopy benchmark spanning 14 lesion categories, more than 300,000 bounding boxes, 213,000 segmentation masks, and 133,000 words of clinical descriptions.
 
 | Statistic | Value |
 |---|---|
@@ -27,7 +32,7 @@ ColonBench is a human-verified multi-task colonoscopy benchmark spanning 14 lesi
 | Classification samples | 790 |
 | Segmentation samples | 264 |
 
-## What’s Included
+## What's Included
 
 - **`notebooks/explore_colon_bench.ipynb`**: interactive dataset explorer — play videos, view questions/labels/masks inline
 - `scripts/llm_evaluate_vqa.py`: VQA baseline with `--local` Qwen3-VL support
@@ -38,12 +43,12 @@ ColonBench is a human-verified multi-task colonoscopy benchmark spanning 14 lesi
 - `skills/colon-skill.md`: optional VQA skill/context file (works with both prompted and unprompted)
 - `data/colon-bench/`: benchmark JSONs and canonical result JSONs
 - `plots/`: pre-generated public plot assets
-- `edgetam/`: vendored EdgeTAM source tree
+- `edgetam/`: vendored EdgeTAM source tree with bundled checkpoint
 
 ## Install
 
 ```bash
-git clone <your-fork-or-copy>
+git clone https://github.com/ajhamdi/colon-bench-eval.git
 cd colon-bench-eval
 
 python -m venv .venv
@@ -91,15 +96,15 @@ Both approaches work — shell exports always take priority.
 hf auth login
 ```
 
-The public evaluators do not rely on GCS. For API-based VQA/classification they:
+For API-based evaluations (VQA, classification, detection), video access works through Hugging Face Hub:
 
-1. build a Hub `resolve` URL with `hf_hub_url(..., repo_type="dataset")`
-2. resolve it with `get_hf_file_metadata(...).location`
-3. pass the resulting temporary downloadable URL to OpenRouter
+1. A Hub `resolve` URL is built with `hf_hub_url(..., repo_type="dataset")`
+2. It is resolved to a temporary CDN link via `get_hf_file_metadata(...).location`
+3. The resulting time-limited URL is passed to the model provider
 
-That means gated access stays on the Hugging Face side, while the model provider receives a time-limited downloadable URL.
+Gated access stays on the Hugging Face side; the model provider receives a short-lived downloadable URL.
 
-If you want to verify access manually, this works once your token has access:
+To verify access manually:
 
 ```bash
 wget --header="Authorization: Bearer $HF_TOKEN" \
@@ -252,7 +257,7 @@ Notes:
 - VQA, classification, and detection browsing work from the shipped benchmark JSONs plus a local `videos/` directory if you want playable clips.
 - Segmentation browsing still expects local mask/frame assets; this viewer path has only been cleaned up for public release, not fully reworked to stream masks directly from Hugging Face.
 
-## Dataset Citation
+## Citation
 
 If you use ColonBench, please cite:
 
@@ -267,3 +272,13 @@ If you use ColonBench, please cite:
   url={https://arxiv.org/abs/2603.25645}
 }
 ```
+
+## Links
+
+| | |
+|---|---|
+| Paper | [arXiv:2603.25645](https://arxiv.org/abs/2603.25645) |
+| Project page | [abdullahamdi.com/colon-bench](https://abdullahamdi.com/colon-bench) |
+| Dataset | [huggingface.co/datasets/ajhamdi/colon-bench](https://huggingface.co/datasets/ajhamdi/colon-bench) |
+| Code | [github.com/ajhamdi/colon-bench-eval](https://github.com/ajhamdi/colon-bench-eval) |
+| License | [CC-BY-4.0](LICENSE) |
