@@ -1,0 +1,27 @@
+# Core evaluation runtime
+huggingface_hub>=0.31.0
+datasets>=3.0.0
+litellm>=1.0.0
+numpy>=1.24.4
+pillow>=9.4.0
+opencv-python>=4.7.0
+tqdm>=4.66.1
+
+# Local VQA baseline
+torch>=2.3.1
+torchvision>=0.18.1
+transformers>=4.45.0
+accelerate>=0.34.0
+qwen-vl-utils>=0.0.8
+
+# Viewer, plots, and notebook demo
+streamlit>=1.52.0
+imageio[ffmpeg]>=2.31.0
+matplotlib>=3.9.1
+jupyter>=1.0.0
+
+# Optional: loads keys from .env file automatically
+python-dotenv>=1.0.0
+
+# Vendored EdgeTAM runtime
+-e ./edgetam

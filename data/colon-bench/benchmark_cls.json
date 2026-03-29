@@ -1,0 +1,3162 @@
+[
+  {
+    "video_id": "412bac196e1d446f8dabfe8c09c7eac9.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "2a60e0a321c2471eb87e1692ca07482e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "3e9fa383ec004d7f836ae08b414d2935.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "8904ecb9b9184bd880cc1df970c696f7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "884664d36e6d4d469ae68675000209d1.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "376feaf13cbb4d02bcd34473af1eb61a.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "566267a488214c8cb463105c92d7948f.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ed02dcd3929e4c52bf581b4ba2e7a9fc.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "194807cf563d4cce8a243975b90774fd.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e4fe90df390f46b98a1e05201ca5182f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f2342c30b03541b78fc9ec51826cf77b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f4b4c42f089643b381474dce62361516.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "fa8a2a93748b40c5b8b4b6873d9ddf9b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "517a212c0be64f01bb52613ec9cbaa02.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "40b53c1c9f1048568a0d1132c733f2dc.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8c77494a6dc5457bae76de0773cb066c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "42a61868827340129aa9e7f8c47b1d80.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "bce8c5348ccd4467af338317ae212f00.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "68b62a59e6a2475293a2ada20563c148.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "5b06f62466a5485b871ebd9682dc959d.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "69af0d7e8b0243128c66bf48159d7a96.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e4bf579f9eb448e2b978bccdfcfcca7c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a90afaab09784141b4a80c18695d7b71.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "43e0dfe8ce154255a75e9c305b7b4ce3.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "3512a35d602249458c6658beb5ec3433.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0d4f93b866ba41878802f87958bc43fa.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d1aee4583b20434ab7431044ff746811.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ada1588a5dfa4a03a02229fafb965300.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "144f8236c7f34e94badd9496dfc36886.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "7e37fc30bfc648ffb5ee84151d2ae55e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "db8b3bbab5bb4e08b629587db08ce14d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "be5cda6b1655466e827e3702f8a38afa.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "96d4da1e036c4b18af675e8902dd92b3.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "c47f697834b64723990cd0de844855c6.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "e57b6bfa1331427bbd082b6819a57d36.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "88425018b1374a478865b0cd4edc7302.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "bc0f5e8b47504001be64538a6490fc6c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b8a6b290930e458a82eb20c89dc15ba3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a475a156e5a24bba82971c93d2869d9a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "1843d3f7f0344137a433b567e2e9db3c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "80c785df5ca249cfa1cdbd91eb6404cc.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "86e3e12db31e44809fc2dd9ac85779cb.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4a83e7bd5f334466ad508f11d7749f94.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "b09a1ef721954804962e7116a92aa080.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8086f4f3287f4da9882a5d700f325bd9.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "08b6753161914b26902615224e4dc77b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "053c457847bb416bbd3513379c404a38.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "970549c08d67480f8c1258cb325a5e04.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "c1c1400e626647acabc6961bbac90eeb.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "b76e4635d4884530a02b690cbea7b079.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8a7a290b4976418dad1d30988c6d24ac.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "23130add110c41f089f51a1ec59ace31.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e5f31daa4e98475db81e9f8616eb29df.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "abf2e351acf04e569ad91642e910868e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "1642005c18124089bcedced64840f149.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "2f6f3d95b5c84f3c9f8485cd31a39dd8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c5d4c008f381475da9266c11046b0e1d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "69ecaed849a14eeebb5848131d2fab3d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b3c78cb9666e40ac86647220ea42d4c8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ea72b7156d3143b2899865040e2f2128.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "064067fc685047bd844427cd796a8848.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "3ac0fe1e62fd41abb1233159ae2a08fa.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4473705d94564e698477901293554247.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "a09438e0f699427aa363c279379c3da3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "5a867f54feb04cf69e0a60f1569234c5.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "34be175d78bc49e9ad47f60b4fb417d6.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "2f692766717749e7a7603d997cb47b33.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c8ff232abe5b45a4b4d7c327684ff05d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "dbbcda37f2a24cf78ac4bb3811e94951.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "3fa5fedd24b64e158c0f18c7bfa80ee9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8a2f5bec093140c8aa0c62676c76d61c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e8710be6857543809f9cd2d1ef7257e1.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "1449406a037346c38c03f4a32509b5a8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e5ca9957626744499c7c00ce589430e4.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "969ffec8fd734f8192b97af5d03dc51e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "6934bb8945bb489f8e20f845b98294d5.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "bfc288d58e3d4179b88d1c9fc28dd7e0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "1075e147624a452f879d331df53daffe.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0391bfaa54764ba2af956f11655f876a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9d1c5ca9033945ea8242a40ebba3b845.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "b1ba038e2ac84460928dbbb1d24dbc8e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "311ec4cfbf524323898cfb33ac81b3f5.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "132679c7a44e42f292ed4d16ba91b74f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d96741fe91374aa79e167d2a099e2060.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "14144cfe80f94b70bd47c3a290c1094f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ac3e055f8f91460cba6ee6dff8f4f9f7.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "74244c867e074162827f5f50cc7d55e4.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "db3dddf4c76a4e22a26d48a1157d6015.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "1c824c9c93c34a849dfbcf7bafa0c278.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ab5fc9618a0c47a09af983907629cff2.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "50431c18af454b17a4482b11646b68fe.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b76f7db254924b4cb9e46ee7693e941a.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "574101ff0aa949cb8402806c98c68fd1.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c3798a4f49444c4eb563d38e835025b8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "cd1701ec83b04f359d005958f46bcc7e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ca547418b2a546b3972e1a90f34b032f.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "1aae11a693bb418d835a3385be9dbf59.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "4286a8d7e53847a0b21dffea1d55f99e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "6b569517830146048b3d931e4978b71b.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "1036617d8fd546c7a574b2572dd1012e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c15d8b3ce5114d5d8b6b24094df00cb8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4e21e7f85eb14c2b91bcf290fa555d1c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a854e2e8a68541fe99d777c7653d178b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "7147e96b6bac425baf9a043f1f312b8c.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "57eeae20f26b4d1a9b86b023dad6a9a1.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "6e23065b51d74333b45fd7e741d72c22.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "751c26cab1ca48fe918d89f144c426a4.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "8d8897931f4c48a9912b8dc46af94409.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6ccb57efdedd402fb67b6b058635755b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "bf44e60693684c1c85540df971a948c6.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ba0b228033c349dd86d193798fc2ad64.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e9d114d77d1d40c7a4180b40fc94e5d6.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "5487add6a83e4bf3b3a9bdd0f20489f0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8e6f4b98ad0048d481c48de15d19720d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4b7b8714f8494b66bef601f41d960391.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6327cb6ae50a434fb379fc3260656373.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d29dcd968abf4e10965945d57e945309.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "8f02c06b06754307acbb05966bc909d7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "65662e37170a448fb2634ab84500751b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9d0afadb17794eabb8546819892f1095.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0adb6370b93c4817a3f9bec8d17a672a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "aaa05fb7d612413c8247a4f62c2d9c52.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a1bb970355924be5872d0a05a74217f0.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "9b975caa5331410d9df4d605ce4eb8fd.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "baa347efd8c1499397ec2d1127102de9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ec328b0c59224beba34ab18dd688f90a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "04a3a5b309f140909741be4132744ea9.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "21b7e41b3c6e466b8a41159f74a1a113.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "a5ef98fd09024dc2b730a970d98f03cc.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "386b2efc118c4de2a31e0d4b2cf22979.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "db8200e6e92a4609a0829af75033cb69.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f193c3f1f80640f58ace0f69e5d0c916.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "aa62ae90b67543e2b7e3db27010663a0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "bf8cb1d50a9c46328afba9b7ab0543a9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c3e414a73a034e968286fb151e1b3055.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "7ce2f573ecc24e24b48592385ce50a21.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8d13d0885ec8439d8b1835f1f19c2aaa.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "23c37fba45c745a5920e9b98215c00f1.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "76d9e66170ae4e46aa4172a6df9364fe.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ccdcd1a0ee1644db958a37513015a688.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2ef5600faaf848638aaf6ea047d9ff39.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ff792108f4104947b4fb336fe41fbbc7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "00dac1b4984746c4bc34cb44eec29793.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "fef96a38622942d09e6e911c1c7ffea0.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "4db364c0ca854c0eb2c55320c15b6a11.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "68b603ca20924b298742b0939fa1c5b4.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "7f10be3bd0194f0bb0480559a63eb73c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "5d872179e5794fa3b0924a44bb3038dd.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "90b2bc07b7c44485b29d6419b37efd01.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "f22841063ada44ca9125a5cef069a58a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "1ab52e8b3488417499f1697903d08138.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "5510f51116d84010ba54b60421e9d255.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8fd4afa46412461f93242d00974e8d7b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "5442c71e28534da185f6496550a5d548.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4f8bc193e33047c888306de006729b6e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0da21d1c0036477b8da9d77cfc01e111.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "33b42b2e8d9849cea8e87d0117ab56aa.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "396bb07cbfdf4f15b762fd4737342b9b.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "1b8484467b08434b9040850dd52025b2.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "74c354abc5fe42e8af08a27e5ccb1e97.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "88b5bebd30c34471a2636053e3441568.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ef322ed9eaad4c0fa27d606b2952b828.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "31dd21778e2e4e5e9fb6b812af0b1c57.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "c364c24afa394dc0ae4153090545d3e2.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "7d425011d8e443aebbc8149708dca59f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "041eb45e187a40728d85cbd3bd24c891.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "387a19e048e34b6c9aad59cf88d5002d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2f7b6aaea4ed4378b79f7832965310d3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "fe3021dded754edc8ac71cbd9cbacf84.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "f52752560e0e43b1ac951cd86ccd6776.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "60fee2d17b7b49538a9b06e665758e05.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "7861b8d84c7a43918a936905c7c18896.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b53e136e14644440b2785d0c221cfdcd.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "82d43191cd394b17b3730951ede93d5f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "fd3e5109a0be46da86dad86fc8867a4f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "edfcadc47a5e429fa86081f17e6e178e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ddea8bf8c0d1426d9f15a84d816cda8f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "5c969f64a46442618a7df7bbd6aa5734.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "64afad64b8b14b0dba70a48ac88653e1.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "3948c4745fbf4586854ad453a23d0e2d.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "bf866db5940f4e10ad93b185aea0c334.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6ec2fda7873547bebea8206c93bbe6ff.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "afdbe68a20d04f5bb3dc873db7014cc5.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e92e3af716f94587a207b746e7631453.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "1daa452a81974d309b834ce9383959be.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "107dc8ad929a45dab8702948f6b9dd16.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9aca6c8c6e4d4a8ea780bdfe16008f86.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "692b84fa3a4d41fd91ad60342210cb5b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2167486668574969b3d306dd0b361ea3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "da94d9367c884957b63fa7cded28975f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b11493974b784d15bfc53b4f8dc5480e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "03e187f93e1345b281178cc5925992ae.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "416b37ad926d4512a4266b7c8be4468c.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "1a34d4148eb1486e9c229e262a008bc1.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9d5d26dc5ebc4b26ba5f3743269c74db.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "95715f5b7cd34878afb43d1762a9dd60.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4d914a4fda0545c2a20cb207a3a9e4b6.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b613395c4ef740a1b6125d975b461e04.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "928c96538cf54e8ba3dc5c159e9da46b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f177f881f3254fbdb2abc036c737c83c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "83b615c11463437f908024e4adf81610.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "9da98e9ac773469f805a6b7455caff37.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8dbea980e46d4fa1a3f088ce1446750e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6dcb80a8ab39474eae2fed43c6aa0342.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "2c7bef4c1ee24c9d99d835220d6d1d97.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6df17be72c994c60a1b7735d1a9b07ef.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e1b9331aa2b647f1873084abedb8838b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "1273e9e7c3d24b44aa358702d757f4fe.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "0c1e93c034c9405a8792960130a7ec85.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "b47e790cfcc4444ba7161f0c2fd473b1.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "160de331ea60469f892c9e20c7765c91.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "8ee561e371334932b8ec6681817f2974.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "deebe58ed51b49e69cccac4371423004.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "e4370000121e40a3bf5baec7185ea0ba.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "b998e54900104cf0b0742c0e30191de0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d51371d7f9b34fd6ad80dc95bf149204.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "639cb128c6374f5fa94aa7183bd87d32.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "e2cfba193da442e186c55d78123164a6.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d7d4c577b2b14717a14d856a8aa8fd8a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f52cb859c30944ed8314ce8eb3fc740d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "24a756f84d164ae5a424e74805c2c8a8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "3ab7fdf90ebd4308bdbdba8ce23d5682.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ac7dc6417f0448b4832a44d36a07bf63.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a2d7137c3ae3416c8933798670db0773.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8f47a249cd194f0e8ebf6db59440b65c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "333b7400643e470d8aadf5ba7ed8ce94.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a608408339c247a88a94dc9a07e088bc.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ca470d5bb8544e34b417761fa37d4a71.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "52d2d0baf0d845409453f71560e934f6.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "1321c2255b954e62ba38ab67ee9de76a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a1fd238331ec4c29960f6945ac1a43a7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f6978b2eeeeb40e2a40531950a13d903.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d70d11cae912406792ce88e6dcab3612.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "13ab4b301e7a4d1aa7ee028eb426f591.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "2e041f18ef724339871f8bc870a56803.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "6cb551c9101542519de51b74de5b5b46.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d24d3ff517bb4a4583def5a73c2d62b9.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "20e9cc8c19f941c2b98c7155c5a29fd8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "96ce3cc0e9d74e53948d015f9f516b3e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "82adf9aa1df945d4bb5bf0098483e126.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "2e8126635c7647998584f17482298e4c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "bf09c1b16d9443b6b165151c5f4ae328.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c57f9ec9447c473a9bf4f99fbf01323d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "46cababeed4649559a37675a809908d9.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "b5f24c4369df4b37bb277ed4435a60bd.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "74bcc5c141da4f978605593df909b797.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "19ac4d483923425bb12d8f6caf0215a9.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "71d02e91a87242cb96e5eb740285d8ac.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "cfdbbe71c18243cf8e3c8ab607d0db36.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8e2cd21b65ac4986a63db4a75b312e01.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "570dbfdfcba044549ed99a8bafd96611.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "441bddaaba484373acd8490c4c6fca4b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "53027498323a40e8b1c8dfe8c9992046.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f5603f67e3854b82b587eb6bb8341c7f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f5512cabe1504efe82d78c9cf584c4e5.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "d12201f9e5174880b09f7d8ad84d546a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a1f29cb1f31a4848ab9cf2243bafa56e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "47ec21c77b8f495b8932f6d3f5c36c3b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "19bd1749184048e1beb636fc2385fb7a.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "f7ddcbb2a21e4f9aa83f6e4922797002.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9ebc983d4cf848ad9cd5fc8c7ba5f4c4.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4ab82311373046b498e29154c5df5d89.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "83e43cb9e96a4189b3259a131295fbaa.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2797af985e1449f78414bef460715b40.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ba52475c7f394a81a06e3bd3c1a76e6a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d79e609253dd4a95bea98c6b6f1da68e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "a449adef37374bfe8c4779c56f0f797f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "5d4525d9e9fb4047a6a1d8971faafd43.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "74cd3e7ea9fb4fd9b003ebf71d0694f9.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "62d1739683344e5db85765cb8afdbb1f.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "46eeebd4645a49f596ef1b431a23007a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ee50b5357e004574be9d66ba28d387a1.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ed7bad503d1b4bba858948f672af27ce.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "bf21b3d22f7c42e2a0025c076fae0f5b.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "d4c2feb6105f4911b18ac42d226ef082.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b7215ebc11a64e42a04bc9e95a3741a8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ac5711b88a36427099983c3c1ecc1647.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b77d0e6989354eb499489f8f5b77cc46.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a831cc847559425e85aecae0aa9bdea8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a45261945469474f84fc051696c372da.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "40ad57f9bd8348deaef1504f7a5f7417.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ad40f468625e4eed925ad941b38aaa92.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ec63e3a11f294233b1e71a615ad72d73.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "fc24e9d02d104ef39a9eadfac19292b6.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f0f8fd8dcb6947709fd4fe4759254400.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "524b8332027b46a38b9dcbd71c89e13c.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "39e59d07cf0f43b28f2890e5903af607.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "42e21a0fe28643b5a5f5ec298d6d46d8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d681b8f95f754d489e96fae84a5a3597.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f51aee7f0d1e4cc9aff2f7271d4bb88b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "3402915f8385407486ddfb786f404f38.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "25bbe8c741a7473ea789a741ebd989aa.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ecf9a42d5cda4d729cf3a532b00f535a.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "6033656d9c224d8cb8b2a24449d98e0b.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "334c718bfd15483787520a30225f9dd8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ced728968cf74a09bdb1a23415568fb8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d65078be964c4f16a76c93838a84cb1e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ca356ae785e048b6a4b1d8ff0533f451.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "bcfe7b48dc7e48f0b59460118f4d0ce8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f576852489f64f25ad5db1db14aa6a9e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "257973ee4c5e46299970dcc2267481cc.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "deb6f93df8ec4d9686f31dcc0a00e321.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "12893f97bc404988b64d32291065ad11.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4981e94a51ad4cab814f8711fe817f1a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d23f32a4467e4f7c8a667f4acc5b6ea8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4916951fcbe2471dab93fdfeb0e4ef02.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "21322d07ff824df0b6c174ec3f21b5e4.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "5b42780b24e3428895bf0e1ad437be37.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8bd44a504351402c889d1c5cdfeced5e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b11121ffd78a43ebb7e33fdfb67f412d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "503d2e93a10c4d4e988f1f666a4c3f11.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6b992b224c6f4ca58276cf5443f61bb2.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "3c0a58717ab842b9b02eea5961af61ac.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "059c158483464799823d1f82290de4e0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b94cf25530cf4d00a46e875845566323.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "bf03219bdf1e48908d4056762c8f1828.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "7efbe311914d4ccebe911c8ae63e7c44.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9961850314b84bc0a915ab95270e91c4.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "20e250dda4de43648fa2bd56823b7488.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "99d202c94c204e118fbc12e309d19d35.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "5fde0473ea8f4efe8a1b0e6edeb833b9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4292efa53d3d433ebcd51f0d72d171b5.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "3fa6bb09529e41f3b42ed3982426bc68.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e6c0afd0f69a4873a0e6ff3a8db6eee2.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "879233a33b764c9aa8cce023e913f122.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "b9e5ffd46c584d0292a782a19459638e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c9a1a653aa50436d877e4b61bd9a1aec.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f9143e51abea4b349cd32896c4a8a659.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "887b205f5a38458780b790e18b14018b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "827ea93d850c4dfa8c3d2c30941af039.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "7ef59e331b8d4ac8a650e6151874b181.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "66b9fbdb33d248719f588be312d0eed1.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "562f03bafc7b4419a76bc835a731afd7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e87e39ec23cb4ff68d1a765fd51b7d0e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "181a27f3dcfd473dac44b7fd2ba05998.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "bd9fb0caf49e40cfa2782e69e6b28867.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "cd4579e2fb1a443da564655fb51980c9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c7a85753b3654eec823b4b32238464a8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ed530bc7a8274cbbb9419c9d90f5a02b.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "9c3e6e43f0b342a893ee807a0b1551a0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d5485cf35c3045abb8d816cdb0897039.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2a961f6463a84174be19cc4ec9c51d82.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "1ccff1ab07644543aa89cc0cbae6e0f1.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "aa9a8e8dc9364c25ba3972278744eb33.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "21da4a783b5149aa8ce336474877ac62.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "fc952ab2aeb24aedbc614155298e732b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "78b70328d2724537b70d95ebaeedb91d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8a03d0e10c1e4ec489a145733ed33780.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ab15760e45584f2f94cd99aa81e38bb1.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0634ec38933f40b092218398b1a2dc6a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d0adb65324a94ea6aef1ae43093e20c1.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "cbdcd9947f9846c09e64031a8b5d05f9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "36261276396c4bd79f3c5071dfd2bbc4.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "04afe39d5e9048ecbfab72ecd1f0dee8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d845ea410f654075b5e2aeba797a3b94.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "0f73981c170d4b2f8c2b40145bd08de4.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "4a37d236b9e34a57bca1d75be85ac06a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "34757c24c36f405a88de28faedf899b0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6eb16b871d634e199f1b85eaba48bc21.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "9ff79db0b65e4510a1d19e070f0c9124.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6d4178634e8b4d0f83c57dc9dd35153a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "af8937ed941942a3a5f72d208febe776.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8e5e5ca0ef34430692aa548ecc2e07f2.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "4f942c39f549437fa5aac9069b60a614.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "be1e5e49f18745cb8ccf84a3493ebb09.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "527f02212b4e49339c87f05122bb36c2.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "8e0d5314469a43ab882fdd69bc110dcd.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "fb55f49c24fa40268ffba26da74751e2.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f140a1ad0f3948a5835d8f9a5db06ee7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c1c86db38250497b9f03e5efbbf09ef7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "1154ed657c504ad6a7c43881a093b631.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6b6604f47da844b5aba0c9b6599167f3.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "67649b1d1d244a87819659ff718a1791.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "7f7d08680883433397baf428f0f6afc5.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c83a979725824099b13b5fdf0f5926bb.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "4a07be9028e64bde8256f05e3b4b8cd3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9a4b0cea553e47de88f537d734e4a2cc.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e260793a78844fa3812c511db02c4000.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "58a6cecc191142cf852cd8368d985ea3.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "3991dc924e7d4e8b9c8ef15959d47efa.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c7d254e7521c48c59c2b5b2e46b5dd41.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "76f6bfbab8004daaba978817f6e8a7e9.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "19cc70b2474340d38883f37c912f5d7e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "3030baeb130e417cb7d48ac2b8031b6c.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "2173719899274f19a33856ec9c6f8fb3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2e2b26afbbb6440a850b75644af0cc2b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "91361ab52cab407f85a0a673f025dc85.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8a6ccb8282d54b0587fad8a37b975241.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4d1d1704b507440eba22a886d5a02f54.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "93a03aaa41fe4149804b2e78e993a70a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "7f2c71080d4846518aa48f1a8477b006.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2b0924b7297a4fdd87fedac088694b7d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "24786dd93bb544b08bbb1eed04ee38ee.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f25b682ddc774f2f9a6095a36878179f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6c910ccb4feb4f209e55daffc581a5bf.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f3a688b9110a4feca0a24f46d1909b3f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0c935e2c3ed0455895efb41b0a6ef986.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b75776effb9241078f7b2e946207f0bf.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "caa6360d67354fadabd308124081e54f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f82c43ca7a2543beac740691bd9dcfa3.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "b6931b0e4d4548ebaf5bbfea41e6f128.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "fc72f9cd01a44523a922f9960329ba78.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e4ece15ed5004350ae11969fdb16fc40.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2c7c10ab4c3846a79f944e9737b60aaf.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "7027001245c4469291cd9ea22b4e494a.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "0d5c496160674dfb9314d9fbb3966c59.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "4e77910eead84f99ac83e69d44e29759.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8025a06fe85b4cfe8c8deef7cbaae81e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "9c6f74a3b0df4f4abfa8cccb86b878eb.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "f379de2e340a4cc68c37c0816b1fd126.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8a701b92db2b43ae840b8fe147e9a1b6.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "91d3bbc75ee445dea85f1455ebf7b505.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "6459b7e05c9e4cd88a22d10e528158a5.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e70e0ed8cc1b45c8a41432f608c5dda2.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "12ad2496dd6d4c6e8c2497b56f48e38d.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "d5d0e1e5edc5483d8de86334414515fc.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "313cf76c33d04dd2a0090b70530992af.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4fa3f73194da4177870f72cb809ac17b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e2d3044f915c47de8c5d81e0232475c8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "9cfd637dc8b847bdaddefad7613c611c.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "7003a31109fc4e92a387054b03601a52.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "dfce3b5589ea4f28bd58a4df5d1d173f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ab51986c6ab348e7a73d91c25fe56213.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ed3fab6f86af4e8f8c24707b0dc06bfa.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0d39f5a8aaa24075a321188feb8f339a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0eba8d7c21df4c7396f23de6d6eff9a3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f9ada2969489411787a58889ed9c6971.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "282ddef2209942c28675eff1fdddf66f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "304aca9d68604022bf40c28d53062c90.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4e0ef4b987ba41fc80121072053fb6c7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "5f94800131714e52ae84cba8ec5c4f21.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "52034b9861f34a83a84397bd715e3a39.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "c4b38a0465d94fb58b7f3cb322fe7dc3.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "675b6aa55a004d609155154b75747730.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "d1c98457749b40bd89f4d14a72f30fc4.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d7ff9e1cc3ec4e9aa1aebb2643d57ec9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b8eee8c337ce47df834548b46049772b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "34718cbe800546d88711836abd6ed0c9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "723b6ab26a234053a9f3f9f69388e2e9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "81ab4522b0844071b3540fe1af7acb34.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "b08dd34e2c7446b4901b0a37f3666972.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "b324d49a909a40efbc88000ab26d4c36.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "104e5ebfecf2458b9c87e23906b9c1a2.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "10d52b0bc9b8489f8ccf54bdb75af38b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2add1e0ac52d478ea650fdc8f82b8baf.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ae6b939407bb44799cd588e5d0e620e9.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "2393b6bbe1274740b36976d6315062ed.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "566dc4aedf8943f7b0aa2234124ba8f6.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b3c74d9a93d54b558820b160299fab6b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6137d548d0ad423b9f2a9c11c12dd5f6.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "3e2d03704ed34c08b45d83f523e582db.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "56a5feb780884427806691f00057f9d4.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "56e2d21b758a4a05a5e42b2a511f2133.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "342f1815482c4b77b6ad284aee4e250c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ca80eb4f8a494d158fa14bd43bfef49c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "827977fb65114e44acd60a1cb7119fa0.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "773205342bb44cc6902a84a6482be76e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b9715e663b7b4bc99c450181b97dd133.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "62d9e41493dc4b1eb221c09cb34cd76a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "cb909d6f690049f78c35fd9c63f8ac4d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "7b87b8b201174047bf18681b0117cecc.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "a3cee0ff986c4907a29506e32302c605.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "75eb83b5e5904f6ebdda8f74bbdc0f41.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f6856c4610bd4975acbcf82d41629001.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0a8185ce0c3d4045a4f47a09e8eca164.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "066c09e54fbe4f818424ceb24cc839fe.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "04b38662aafb465fbbdfc35fa7cca0fd.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "5fc5493a5c92442cac493459e693cda9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f2369197d0d94d8898773a80108a0a04.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d3349d532a4b432ca52259f18e4761d8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "e774bc5d4b1947cfaf4e602330d751b5.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b4c75a52567e4640904029847b7c9684.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "7de3f09885b1481b9c1c6a51cc1ab03a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "911424963cee49f88642fe0e06ec35f1.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "72d6449079f34c18926c863ffd401e44.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2a9149ae26e74b26b083f26d309e6eb2.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "cdbd4253b9c74623878ef63ce1ec10d4.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d8235b74287341cbac12f48a3c1a08b0.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "735ba2d74f8a42feac2dc87ad6b9b530.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "8cf24d9055b14851bfbfc77d30af45d6.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "42c8d56fd1014a77b2e849e30fcaece4.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "bc157d0e5c91413692e98c4271f59186.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "dc90185c1c6e488c9bb6fc423ad0cf33.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6c15a1e414054aee803eb638046ce7f2.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8e66d26acb2a4658bfb506904fd29bb3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "dfe36516037f4ee28fbf7f4ece2e7509.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "794b0dedac0645bf890fa582063f3536.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "47249d76a9104a79835a33b11f91200e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6d242273c3b94d8f8b3db30b8d631072.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "3fc18dbadfec46d895356b4f75e45e8b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "866449d854e14833bc46af369dbce29f.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "7260edec154d4555bf663a287e24477c.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "055fc661cb6c4c63a80ca0f6890762ec.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "59e6dbac472842baa6e0dc97a24b59b1.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "85238943cd624666a76ae6c060c002c5.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "a42028931d04418abcd59849e879d35c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b64733360d8c46849ec289d90e19a4e5.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "9d370b0b86f3410a8ba3cd96f262d31c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c721207cc99c4db6bed795667cde03f2.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b285a926f71640f9861273d784fbaf63.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e42c6975be5c4f35ba34f2485ff97001.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "fd303cb7f8384b4e9c7949e85f5ab2a0.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "23498acdd855416aa207260ce0fe8fb9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "1154f3aa0833463280d8a855bce3425b.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "03e2226af9a540038216049039ff99e8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "1be81d73af394e9b86ac362f013fba6e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ab7e3dd07c2c45eab132ccc73b8d39f5.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "15c936575c6841208dad35ffdf3acff9.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "10f9cc461a4d42979ed62e837bcbe7fd.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "20257410871f4ddbb129211806e090ab.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2fad14b6f664460aaf3e2b73836f86d7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "231c1c97a90142b4ab63d1d81d9a65c6.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d7a9cca2ab124157b722913379a468c1.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "69222d94ba8943d38d06976c9fb3adae.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "9ff6a30cec1e48059c645cdb49e5d2a5.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d7280460862f4c4b88063c9e11119ae5.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8f82c61b41874b1485d3740bd3a0d25d.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ec9ff868d1554812a776ff3b6959ba38.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8812d73df8594422a987078210c29e7a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "3429524e3a9a4aaaa862e561dc04e470.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b0414421d34b41088074b2fbe68d4fc4.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2efa6fe8e7004bbcb221333e0bce37a3.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "4f4fb37590d64458a6553a75e16b5c40.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "40d3f64ea3284789b1f7f6f485fa7e15.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e6b2f548c484465d8de56b46d1f0104c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "61540c9267744be681e261cbd2b2a3bb.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ff66032e739c402cbd736cb89d7240e7.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "3e0acbc87ddb43578588c61863d0f9d8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "efde2f2454e64aa09a11744d8f8ef4ee.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "6ab9c5a5bb044c5d8a56f4842a933e4f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "33451006e98e4f789dfe91b8d3908bca.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4fa20b42173a42d69a253aad043c6268.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a65bc055ab51408a80666195ec05695b.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "22d9398cc5b14c9eb61f2b14f4c1795c.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "5ecede70611248f3b2db53ce87732aa8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c91cd37564ca4690aa3b2758e6ccafa2.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "34052bb945c7492890a76a11df0dfb97.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0769718c666a4b71aaf678f89be79171.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "1e79f4e0e3c94408a87e5dd1c4bf3bfe.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "207c10f209344fcd934695a2b62b90d0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2c3c7d6d43af4105b6c85ecfbfc38e7a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6cdd1a931abb42be993062b2a90c8f3c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d07153e5e1974e08892b22ec8a70a771.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "30a832d61e0849de9b2ec66f1451a94a.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "c72e17475355470e8d4efa22ce2ba9fb.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "cac6e9c8b3f54f1cb42a1965bb94d8b9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "85ec9114f7634d48802c6da0a0da5d5d.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "1d13625aa5e34c629d96fd2493f2bf99.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "a7ea80e5e9494816a3767fd69131126c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "bd2e40b00dea4c568ad4e3da15429134.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c3ca71ed7f2143ffbe3fb949213b2f47.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ffc92f2dec5143589ed612207fcb2b89.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b505d65d9a7f49bfa8f03b67a1be5f2c.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "5ddd06522d0047c2afdcacea39e21b2f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d51376680e5741cc89f91bfdc3731a53.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0a0e472bba9e48aea5ebceab04a83a9b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f3ed519ce3be4fee860ea52e25f3fe50.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "58458c25d2be4b2bbd7d6fe3fbd04117.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "38faef26333a4ab6bf15b6c6758126dd.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8c8f58e4d65a4aa1aa9746751767f6f8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "2f2e0f902ea94e52844ab507dccfe54c.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "e8494aa102d243c19ca644584aff72d0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6c54978f41524f9ea1f03d75408436ea.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "07a0d83829e34dddb48a5ed42face020.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e5d5c2132523445fada4f2083b32c159.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "13cd7076097a4915afc0580251e2f230.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a8d85fedc53946848e1d31c8d65b671f.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "24b496a87379495887c256b1ea886ed0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "3f157cf39d384026bddf49fe59f19b74.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "00d14ab807fc4c249a4d7fd2966211a3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "bdf5eeb3a64a43b6aa8242ccbc041b60.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ce2541ab50e440bdbf9f87a57e2ff156.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f84145e3476246f59c924de2155a1215.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6242c32a51444a34b1d75590fd92129a.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "a437103d01f04e0e8350b2ab7ae42e64.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "a87c0f9d57a9408f9b5a5d5bc8aee841.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "e4a983b639f34f85a4b4578331f9b5b7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "1f34eb8427ca445490c6af24c0fdf365.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "24c113bb8ab9417eafa51aeda5180194.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "3d1b42c493774dcd9169d2c45fd643c7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b7420e289d4d43349dc003360bd0ebb6.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0b4b692d6d9d4f19afa0df917471569a.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "4bebd3dfa353461eabdc759b879137eb.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "002a699196d84576be464a4e4f6adb04.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "178160d534344d38821d31bd0077268e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "dfcd02fc9062409ca859578d00a3ce34.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "69c490c2a4cd45169e7069d988441383.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6c24a14e20944a37a622b4a4c80d7e77.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "06cab43f3c0146e7a8853e1c1a817ba7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4ba7149b05e14da88d44973c825ae51f.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "363681853f5c49b8a1b27c22557fbc01.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e2b70f25a676495393512ee5aad8872b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "78cf65d7b7ab4604989c5d664eac5e3a.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "f13db54657cc41efa4d61ee30776289c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "da5f985ad0bf4773a31998d104f0b3f8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "b13812ae83a4408783f81201be1873f4.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "deacc52745eb4308ab5685161bd6aec8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "04578eb5e7624ee9af1fb827ef7401a8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "770ddcce1c194e5d84233db15d216a5b.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "d2dd43874ab04d82a620ebdc700ab39c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "3f70efde63fe4f11ae9217f8f74c8e18.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "98c4ba8fa3394e50a324665a32f63af5.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "81a8fc96428941fcaf917f2012657904.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "412555788e8f4eb59329bb05db5ec903.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "1c14c01f537745c2b43b89870510598f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "27b066727c1b40758787baf3e3b59323.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "cdf8ff6fc2a54742a994aba308a3e62f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "fe9c8ef3fec1400e86cafc7d7dba1d24.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2af7eff0d9b14039a6873843e2684c24.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ab92efc0f79547c1af21a16ab0f6cb51.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "67698d3a049e45428b0deac106e8ca96.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "13b3be0cf37146289e3e4323d61d7f2e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c047c26b0ad84de4b3ac73ef9d0fb3b4.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8ff7b5d2ecb44c2b8f7c83c35e4c5be2.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0c5592d4fb0b4602a3dcbd39dae97c68.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "92c806b65a1a49c69c8dc31db9a0fc28.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "cbbd787b01324782962163aee7529393.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "eee13ef6bca64272a2c8b623839f983c.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "624b8b707c1b40feb849017bf6c40e26.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "c669520517d14d469fbe91354f07be37.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b3b9c13fa1b54c3eba6b159f0139a49c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "35ef230cdfc442f08821280d93a8cb71.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "27449880c0c9440aa025c0a40a98e41a.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "cc3cf180e49c410f9455fc09ecfd4be3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c3922a971e314260b8e2f7e71c5f036a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "7e6fb24dc1a94593ad43b1e10207a197.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "7037c98ca7aa4e1084dca07a078f6f4a.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "102c223006dd49aeb3558b739dc54dc3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "282428d5f49e4e5fbb094b2812b1fce7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "286db167c8e24db481afa247acf36dc7.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "40d8102fe958484aab17d96bd9ccb5ad.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9e5aaf998349410a891774eecf1bb40a.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "fb5d98f6381e44ba89f98241f21ec94b.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "56293313b0334f20a8b05c26981c47b3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b8ae99edd7084a5695eff72168fc6244.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "448265bbe3f841bf8df50161a57e13ae.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "3fcda7ebd90f4f9f999223be77431d08.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0eab9c3d14574835b461dc512cebd5a4.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e68e5761babb44afa80e007e15ebadfb.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "12f8c5b9d21f477cbae6bcaa106d77d0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "73a5fc520cd343839a968f4181cb73f0.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "caa05d92f4d14f5491912f7cf9dcd78e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "5eafa28ffa684a25bf90cb7fc43aea3c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e93e70c85c22408bb250372f184e7699.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "e23a7e5d300d43549d56be6941b70533.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9cb8a21273b842aa9617dc6f3f444518.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "1488bf2404a2429dacb95a4cfc7609a0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d6d109c7bb2c499f8da83bf3def7fcba.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "a408d2ca1c764c05b0a4438ddd31fa57.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "bc258f34ec8a4011a81adb4807521f14.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2a302bdd0caa4c06863b1b3c0add2157.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ba6274fdffcd4dc981b36ba1844b48cc.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "6a134b7a26ec4cf898959e52233d0025.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "440dd248e92c403799d88568522d952c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "fb19056086224577a63300709d559ecf.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "001207e1084c41f5be2d1a871d4970f5.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "342718a1a5e64f8995cb74ca031ca60a.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9daf0a13e9d04d13b8438626bb9a5a9d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "5392f3f675044fef894c18e3dd286718.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e2ef2ee0b41245b3ab7ced5e38cdddc7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e24434978d984b84b0d283c060be3f19.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "cd321ca6b4374295bb9e6ffaa2910086.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "c4d6b8153dc9406e980edc42cb3af4be.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f3b723d80a9148bf99386712451b852f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d3d8aa2ac805431ba6c2ffdea1e23da5.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "27baeae1c2454ed5ad417ea1894bef55.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "3944e9c6305243238a1713a7495c6848.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "c802c89820f741b99e71d59af3eca5db.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "d94cc4b4f496417e8026273b0cfb36f3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4b61339327184b8e83c5562ba1842461.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "bb5b3cc93ead45289d857b21ea110f3f.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "df6944c6e10e4010b999fd81e7eb9d88.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4b92b6ab429146c99878fa2cf327809c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "f1ec5b437fb7498bba5e572edb3f5100.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ae14d5ca481549e1ad0260e3db060726.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "79d29ce836f44761b6dda84f57dc2d0c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c9131b619a8841ef9e29d9c3361ec4d0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "52abf3a8dbb64d979cff92c34c860430.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "50ec5b8c2d36454482ec38fc0fce9075.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "2c7a0a4b43b148fe9de1fafd1df498c3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d7ec5c75c10f4c2abc000014970d2ac8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "9b1392aa431e4ac993e013862bca1802.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c8cec514378e4bbaa046149187b84a49.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "4698e7c039e4498e9e07c910a77a8b07.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "a6bec13bee8d4b928f3c6815b9dc8bc7.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a429d0772e324c71b85add5d5292aa88.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0aa069cffacd4ae587d7c59b2754a581.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8a3d5e46e82c48a2a0d87fbf3bd5c0c4.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "b4bd37528595411393506a216da5a2c9.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "cf844175c08d44288e38f916df9d1d02.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ff0d773dee8c4e019b0b9ad8f1c9adcb.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "78aaec06676c4459b8acef8f244b4e88.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "fa2e9175b75f453f8fb738815651ce60.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "26c89879cf044547a5aded4e3f599f40.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "6a2273f2bfdb48a3866877f48ad90c89.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "49c25904eb9a4e0097224fbc8eaa044f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "ba83cf3716f645eb91835a4acc97d6f8.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "af3240d86c1143d683138f8547e1820b.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "2d95287265a9419cb0430f79b1197847.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "9d90e7b5beaa4ea6ab2dbfc5f714a264.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "26bac782db154e25953069fe12669ef3.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "d6cbfc7d27134873a0c518528c248d3a.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "d65320e0ef0544238a6c7e15d384f552.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "56c5ab358c2d4e8797c41769547b6a75.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "5b41c1f69baa439eb624f2a71adcac36.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b36fc8ed67794d8eae1046528b78e4bc.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "10f07ece80fe427093780e3171a716d0.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a7b4d473e0f541a2a42217986bee24fd.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "699c46809206491ebbe7b3b98c2b4d51.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "c2ee6ecda23a41879251afbe73770a87.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "ecbb4a404ee0430f97d5453cd7396e00.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b47b67ef153b4afdafc857e3abe07a4d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b76151c217134aeb8618cfce2ea5b10c.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "a6d15f2ec3544ea990131d55b8ab78ca.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "42d1ff69c2ee45de9127334f9281dd15.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "12e9e935b9644dee9f9324a0f1c1496e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "431513d68e8f41ba9dbf68f3801dbd85.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "2f4d75c9914d4f17b0f572dea3707e80.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "f5529bd8c2b440e4878bd28ded561888.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "205d7153c4d34515a5e84d791faded81.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c5b28df35cf24681800ed1a2b5093a99.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "34a975b34de94943a2e5accd8519fc1f.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "bb87fa648fa5402980d41c220540ccad.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a09d644f8e2e44729ef4b8496b8aee16.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "3182730ca9cb49bdb620d99b8a27e732.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "e2076139239a460788f228731ffba6b7.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "d8d7109addd244c1b7ce31960a03b4a2.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "10ba4f4ce14b4f7a906d5c31386a200c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "36cd1c58ed634bbfafaa6611c3f1df61.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "af95a09554624135a3951a63cc44d6e8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "e595c574a249440a8af9a4bbc8097f1c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8ddb160feab3427a8d880be2fdf989c9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "aa56dae3b7c1474b95f001d2fb968f36.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "613f0f6cfbb0432eaed4b53f24ab5164.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "615cf16027ec4619b90eb435fe0d6050.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b8c39e926f4643ff94d3562e79ecc281.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "850b1248eb8a4b2ea5cc25b6f79ddde2.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "93c99e4307d14300b946b10b9498adf9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "fd206d8c7869495b85d203484288fbbc.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6f60918e62cf421faa16f8994fb76916.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "3dc2b1f371e34105bf36644b365f3d51.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "62aea882be164f3f94c127153e4ee54c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "954407557f564a9c884827eb0843a636.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "6be07dbb19684dc18e47d7bd94dfb59e.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "07f98444e3cc4d3c99e59e83b9c435a4.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "1869f95aa39c4a5890804f73054c4baa.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "dfb1efda93124990a526a9da8d3e185f.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "f633c2645df040458de983aa2bb25900.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0bb02928cca742949d56e14744651e91.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8d981998b64143af8c9dab590638f840.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "036533f2006e47f6be482f98649da93d.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "1fd5df8cac53434896d8ed7d324f28b6.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "7b909112d7f345cfb6f9b83931de9b52.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8df7c1b237f24e748e15613901b15114.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "400a46eb168f4a368d088a1a554c3e84.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c2313312e1a548ca9d505b3b9fc9a38c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "aa45a1bd62204ca082b4236acb0172a4.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "c5217dde3623404c9cf892bd9f694268.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a50b0407802047fba47357a5882e3ada.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "7b4566da682b4ab99bb077c92dbdb0de.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "915625a4c83947189f08010021b072c5.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "9d9f4420debf4cba99126c2340863a30.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "8ec76104aaf24b23a968f654fb91d4ef.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "197e97e654c74e63a9d0bb02a9f2894e.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "898a2bd9ff2c4daaae817276fed07b8c.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9ab040b3732546eb8d059c9da7d42a50.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9e8317c60c02425c82cb8dbd01c44ab9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e03d61a61d9040dda383e3fe85480ab6.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "209f8deb1b5048d891ea639e36b523c9.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "e0e8ec07225947569ba41a7830faf68d.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a336ba14bd2243a2ae2586a9855271cb.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "65ca8baf6c4c4c23806ee66ee45e7536.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "648e3cd98766495caba9fc29eaa99169.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0083007cf9fb44ad8cf711fbc5e074c6.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "5261ef7f58ce4c10b1cc1506abbb3e49.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "8bfe0b17633948869a6bc5949bdb4fca.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9b9dc8d778354fd8bfeed44539aa6974.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "686c22507e2443ab8c89b01a9f57f507.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "0a4acadae59241aca9094b333cfd529b.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "7232b69132b5441ea33b82773ab71100.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "9ac9229369f7424496ee736049bcff73.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "115f292cd1ce4002a181cd12fb7adec8.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "55fd4c72ecfe4b2dbb65112ce58a2234.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "cc12e7ea07c848d5a8626934a6411fa5.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "a4d0ae239cd34a83a9d28b0c798c1512.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "20c8a001ef214e5fac647b379d40a613.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "85680835e9a14096ab76f1da249ac708.mp4",
+    "lesion": 1
+  },
+  {
+    "video_id": "e920d0a6d2ad46ffb08fd00646473b71.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "c4a9d2f21c7142579097fac66b58bc70.mp4",
+    "lesion": 0
+  },
+  {
+    "video_id": "b89a5225dd5d4eab964f495ca045dd09.mp4",
+    "lesion": 0
+  }
+]

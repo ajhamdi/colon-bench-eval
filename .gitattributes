@@ -1,0 +1,4 @@
+edgetam/checkpoints/edgetam.pt filter=lfs diff=lfs merge=lfs -text
+data/colon-bench/det_results/*_seg_*.json filter=lfs diff=lfs merge=lfs -text
+data/colon-bench/benchmark_detection.json filter=lfs diff=lfs merge=lfs -text
+data/colon-bench/benchmark_segmentation.json filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,23 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.claude/
+.streamlit/                                                                                      
+*.egg-info/                                                                                    
+dist/      
+build/
+.venv/
+# Local Hugging Face / runtime assets
+.streamlit/secrets.toml
+data/colon-bench/videos/
+data/colon-bench/masks/
+
+# Generated evaluation outputs
+data/colon-bench/eval_results/*_progress.json
+data/colon-bench/cls_results/*_progress.json
+data/colon-bench/det_results/*_progress.json
+data/colon-bench/det_results/*_seg_pred_masks/
+
+
+# Secrets
+.env
