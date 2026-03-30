@@ -313,6 +313,23 @@ uv run python scripts/plot_segmentation_metrics.py \
   --save plots/segmentation_metrics.pdf
 ```
 
+<details>
+<summary><b>View pre-generated result plots</b></summary>
+
+**VQA — Prompted**
+![VQA accuracy (prompted)](plots/vqa_accuracy_prompted.png)
+
+**VQA — Unprompted**
+![VQA accuracy (unprompted)](plots/vqa_accuracy_unprompted.png)
+
+**Classification accuracy**
+![Classification accuracy](plots/cls_accuracy.png)
+
+**Segmentation metrics**
+![Segmentation metrics](plots/segmentation_metrics.png)
+
+</details>
+
 ## Streamlit Viewer
 
 Run the bundled viewer from the repo root:
