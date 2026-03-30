@@ -1,4 +1,4 @@
-# ColonBench Eval
+# Colon-Bench Eval
 
 <p align="center">
   <a href="https://arxiv.org/abs/2603.25645"><img src="https://img.shields.io/badge/arXiv-2603.25645-b31b1b.svg" alt="arXiv"></a>
@@ -8,9 +8,9 @@
   <a href="https://github.com/ajhamdi/colon-bench-eval/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-CC--BY--4.0-green.svg" alt="License"></a>
 </p>
 
-**ColonBench** is a comprehensive, human-verified, multi-task video benchmark for colonoscopy understanding. It spans **14 lesion categories** (including polyps, ulcers, and bleeding), over **300,000 bounding boxes**, **213,000 segmentation masks**, and **133,000 words** of clinical descriptions.
+**[Colon-Bench](https://abdullahamdi.com/colon-bench)** is a comprehensive, human-verified, multi-task video benchmark for colonoscopy understanding. It spans **14 lesion categories** (including polyps, ulcers, and bleeding), over **300,000 bounding boxes**, **213,000 segmentation masks**, and **133,000 words** of clinical descriptions.
 
-`colon-bench-eval` is a compact toolkit for reproducing the main ColonBench benchmark numbers. It ships benchmark JSONs, canonical result files, plotting scripts, an interactive Streamlit viewer, and runnable baselines for:
+`colon-bench-eval` is a compact toolkit for reproducing the main [Colon-Bench](https://abdullahamdi.com/colon-bench) benchmark numbers. It ships benchmark JSONs, canonical result files, plotting scripts, an interactive Streamlit viewer, and runnable baselines for:
 
 - **VQA** on `prompted` and `unprompted` splits
 - **Binary lesion classification**
@@ -65,10 +65,10 @@ You need two keys:
 
 | Key | Purpose | Get one at |
 |---|---|---|
-| `HF_TOKEN` | Access the gated ColonBench dataset | [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) |
+| `HF_TOKEN` | Access the gated Colon-Bench dataset | [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) |
 | `OPENROUTER_API_KEY` | API-based evaluation (VQA, classification, detection) | [openrouter.ai/keys](https://openrouter.ai/keys) |
 
-ColonBench is public but gated — request access on the [dataset page](https://huggingface.co/datasets/ajhamdi/colon-bench), then provide your token below.
+[Colon-Bench](https://abdullahamdi.com/colon-bench) is public but gated — request access on the [dataset page](https://huggingface.co/datasets/ajhamdi/colon-bench), then provide your token below.
 
 **Option A — export directly in your shell** (simplest, great for cloud sandboxes):
 
@@ -96,13 +96,7 @@ Both approaches work — shell exports always take priority.
 hf auth login
 ```
 
-For API-based evaluations (VQA, classification, detection), video access works through Hugging Face Hub:
-
-1. A Hub `resolve` URL is built with `hf_hub_url(..., repo_type="dataset")`
-2. It is resolved to a temporary CDN link via `get_hf_file_metadata(...).location`
-3. The resulting time-limited URL is passed to the model provider
-
-Gated access stays on the Hugging Face side; the model provider receives a short-lived downloadable URL.
+Videos are streamed directly from Hugging Face Hub — no separate storage setup is needed.
 
 To verify access manually:
 
@@ -259,7 +253,7 @@ Notes:
 
 ## Citation
 
-If you use ColonBench, please cite:
+If you use [Colon-Bench](https://abdullahamdi.com/colon-bench), please cite:
 
 ```bibtex
 @misc{hamdi2026colonbench,
