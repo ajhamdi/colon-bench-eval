@@ -780,7 +780,7 @@ def parse_args() -> argparse.Namespace:
         "--skill-file",
         type=str,
         default=None,
-        help="Optional plain-text skill/context appended to every question prompt.",
+        help="Optional plain-text skill/context appended to every question prompt (for example, skills/colon-skill/SKILL.md).",
     )
     parser.add_argument(
         "--dataset-repo-id",

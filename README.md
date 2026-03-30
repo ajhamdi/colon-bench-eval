@@ -39,7 +39,7 @@
 - `scripts/llm_evaluate_det_seg.py`: detection + EdgeTAM segmentation
 - `scripts/plot_*.py`: public plotting scripts for the shipped result JSONs
 - `viewer/visualize_benchmark.py`: Streamlit benchmark browser
-- `skills/colon-skill.md`: optional VQA skill/context file (works with both prompted and unprompted)
+- `skills/colon-skill/SKILL.md`: optional VQA skill/context file (works with both prompted and unprompted)
 - `data/colon-bench/`: benchmark JSONs and canonical result JSONs
 - `plots/`: pre-generated public plot assets
 - `edgetam/`: vendored EdgeTAM source tree with bundled checkpoint
@@ -121,6 +121,55 @@ hf auth login
 
 Videos are streamed directly from Hugging Face Hub — no separate storage setup is needed.
 
+## Supported Models
+
+### OpenRouter Models (API-based)
+
+All evaluation scripts accept `--model <alias>` with any of the aliases below.
+You can also pass a raw OpenRouter slug (e.g. `openai/gpt-4o`) directly.
+
+| Alias | Provider / Model | Video support |
+|---|---|:---:|
+| `gpt-4o` | OpenAI GPT-4o | |
+| `gpt-5.2` | OpenAI GPT-5.2 | |
+| `gpt-5.4` | OpenAI GPT-5.4 | |
+| `claude-opus-4.6` | Anthropic Claude Opus 4.6 | |
+| `molmo-2-8b` | AllenAI Molmo 2 8B | yes |
+| `seed-1.6` | ByteDance Seed 1.6 | yes |
+| `seed-1.6-flash` | ByteDance Seed 1.6 Flash | yes |
+| `glm-4.6v` | Z-AI GLM-4.6V | yes |
+| `nemotron-nano-12b-v2-vl-free` | NVIDIA Nemotron Nano 12B v2 VL (free) | yes |
+| `qwen3-vl-8b` | Qwen3-VL 8B Instruct | yes |
+| `qwen3-vl-32b` | Qwen3-VL 32B Instruct | yes |
+| `qwen3-vl-235b` | Qwen3-VL 235B-A22B Instruct | yes |
+| `qwen3-vl-plus` | Qwen-VL Plus | yes |
+| `qwen-vl-max` | Qwen-VL Max | yes |
+| `qwen3.5-plus` | Qwen3.5 Plus | yes |
+| `qwen3.5-397b-a17b` | Qwen3.5 397B-A17B | yes |
+| `gemini-2.5-flash` | Google Gemini 2.5 Flash | yes |
+| `gemini-2.5-pro` | Google Gemini 2.5 Pro | yes |
+| `gemini-2.5-flash-lite` | Google Gemini 2.5 Flash Lite | yes |
+| `gemini-3-flash-preview` | Google Gemini 3 Flash Preview | yes |
+| `gemini-3-pro-preview` | Google Gemini 3 Pro Preview | yes |
+| `gemini-3.1-pro-preview` | Google Gemini 3.1 Pro Preview | yes |
+| `gemini-3.1-flash-lite-preview` | Google Gemini 3.1 Flash Lite Preview | yes |
+| `nova-premier` | Amazon Nova Premier v1 | yes |
+
+Models without video support use frame-based evaluation (frames are extracted and sent as images).
+
+### Local Models (GPU)
+
+Local inference is supported for the VQA task via `--local` (see [Run The Baselines](#vqa-locally-with-qwen3-vl-8b)). Requires `uv sync --extra local-vlm`.
+Any **Qwen3-VL** checkpoint works via `--local-model-id`; larger variants auto-shard across GPUs.
+
+| Model ID | Size | Notes |
+|---|---|---|
+| `Qwen/Qwen3-VL-8B-Instruct` | 8B | Default |
+| `Qwen/Qwen3-VL-32B-Instruct` | 32B | ~65 GB VRAM or multi-GPU |
+| `Qwen/Qwen3-VL-235B-A22B-Instruct` | 235B (MoE, 22B active) | Multi-GPU |
+
+Only `HF_TOKEN` is required (no OpenRouter key). Other model families are not supported — the backend uses `Qwen3VLForConditionalGeneration`.
+
 To verify access manually:
 
 ```bash
@@ -188,7 +237,7 @@ uv run python scripts/llm_evaluate_vqa.py \
   --benchmark data/colon-bench \
   --mode prompted \
   --model qwen3-vl-8b \
-  --skill-file skills/colon-skill.md
+  --skill-file skills/colon-skill/SKILL.md
 ```
 
 ### VQA Locally With Qwen3-VL-8B
