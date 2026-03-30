@@ -10,11 +10,11 @@
 
 **[Colon-Bench](https://abdullahamdi.com/colon-bench)** is a comprehensive, human-verified, multi-task video benchmark for colonoscopy understanding. It spans **14 lesion categories** (including polyps, ulcers, and bleeding), over **300,000 bounding boxes**, **213,000 segmentation masks**, and **133,000 words** of clinical descriptions.
 
-`colon-bench-eval` is a compact toolkit for reproducing the main [Colon-Bench](https://abdullahamdi.com/colon-bench) benchmark numbers. It ships benchmark JSONs, canonical result files, plotting scripts, an interactive Streamlit viewer, and runnable baselines for:
+`colon-bench-eval` is a compact toolkit for reproducing the main [Colon-Bench](https://abdullahamdi.com/colon-bench) benchmark numbers. It ships benchmark JSONs, canonical result files, plotting scripts, an interactive Streamlit viewer, and runnable MLLMs baselines for:
 
 - **VQA** on `prompted` and `unprompted` splits
 - **Binary lesion classification**
-- **Detection** + **EdgeTAM-based segmentation**
+- **[EdgeTAM](https://github.com/facebookresearch/EdgeTAM)-based segmentation** pipeline
 
 ## Benchmark Preview
 
@@ -67,13 +67,13 @@ These figures give a quick visual snapshot of the benchmark's multi-task evaluat
 - **`notebooks/explore_colon_bench.ipynb`**: interactive dataset explorer — play videos, view questions/labels/masks inline
 - `scripts/llm_evaluate_vqa.py`: VQA baseline with `--local` Qwen3-VL support
 - `scripts/llm_evaluate_cls.py`: classification baseline
-- `scripts/llm_evaluate_det_seg.py`: detection + EdgeTAM segmentation
+- `scripts/llm_evaluate_det_seg.py`: detection + [EdgeTAM](https://github.com/facebookresearch/EdgeTAM) segmentation
 - `scripts/plot_*.py`: public plotting scripts for the shipped result JSONs
 - `viewer/visualize_benchmark.py`: Streamlit benchmark browser
 - `skills/colon-skill/SKILL.md`: optional VQA skill/context file (works with both prompted and unprompted)
 - `data/colon-bench/`: benchmark JSONs and canonical result JSONs
 - `plots/`: pre-generated public plot assets
-- `edgetam/`: vendored EdgeTAM source tree with bundled checkpoint
+- `edgetam/`: vendored [EdgeTAM](https://github.com/facebookresearch/EdgeTAM) source tree with bundled checkpoint
 
 ## Install
 
@@ -88,7 +88,7 @@ cd colon-bench-eval
 uv sync --extra all
 ```
 
-### Core-only install (API-based evaluation + EdgeTAM segmentation)
+### Core-only install (API-based evaluation + [EdgeTAM](https://github.com/facebookresearch/EdgeTAM) segmentation)
 
 ```bash
 uv sync
@@ -101,7 +101,7 @@ uv sync --extra local-vlm   # adds Qwen3-VL for local VQA inference
 uv sync --extra viewer       # adds Streamlit viewer, matplotlib, Jupyter
 ```
 
-The EdgeTAM checkpoint and its CUDA extension are built automatically by `uv sync` — no extra steps needed.
+The [EdgeTAM](https://github.com/facebookresearch/EdgeTAM) checkpoint and its CUDA extension are built automatically by `uv sync` — no extra steps needed.
 
 ### Alternative: pip install
 
@@ -292,22 +292,20 @@ uv run python scripts/llm_evaluate_cls.py \
   --max-workers 4
 ```
 
-### Detection
+### Segmentation
+
+Segmentation is evaluated as a two-stage pipeline: first run lesion detection to produce prompts, then run [EdgeTAM](https://github.com/facebookresearch/EdgeTAM)-based segmentation from those detections.
 
 ```bash
+# Stage 1: detection proposals for the segmentation pipeline
 uv run python scripts/llm_evaluate_det_seg.py \
   --benchmark data/colon-bench \
   --model qwen3-vl-8b \
   --frames-count 3 \
   --parallel \
   --max-workers 4
-```
 
-### Segmentation
-
-Run detection first, then segmentation:
-
-```bash
+# Stage 2: EdgeTAM segmentation from detection outputs
 uv run python scripts/llm_evaluate_det_seg.py \
   --benchmark data/colon-bench \
   --model qwen3-vl-8b \
@@ -317,6 +315,12 @@ uv run python scripts/llm_evaluate_det_seg.py \
 ```
 
 The segmentation evaluator downloads GT masks from the Hugging Face dataset when `data/colon-bench/masks/` is not present locally.
+
+## Acknowledgements
+
+Segmentation in this repo builds on [EdgeTAM](https://github.com/facebookresearch/EdgeTAM); we gratefully acknowledge the authors for releasing the model and code.
+
+The original unprocessed colonoscopy videos underlying Colon-Bench were sourced from the [REAL-Colon dataset](https://www.nature.com/articles/s41597-024-03359-0), and we gratefully acknowledge the REAL-Colon authors for making that foundational dataset publicly available.
 
 ## Canonical Results And Plots
 
