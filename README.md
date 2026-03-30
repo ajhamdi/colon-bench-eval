@@ -16,7 +16,6 @@
 - **Binary lesion classification**
 - **Detection** + **EdgeTAM-based segmentation**
 
-> **Naming:** the public release uses `prompted` / `unprompted` (internal names were `easy` / `hard`).
 
 ## Dataset Summary
 
@@ -47,17 +46,41 @@
 
 ## Install
 
+[uv](https://docs.astral.sh/uv/) is the recommended package manager.
+
+### Full install (everything including local VLM and viewer)
+
 ```bash
 git clone https://github.com/ajhamdi/colon-bench-eval.git
 cd colon-bench-eval
 
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
+uv sync --extra all
 ```
 
-The EdgeTAM checkpoint (`edgetam/checkpoints/edgetam.pt`, ~54 MB) is bundled in the repo — no extra download step is needed for segmentation.
+### Core-only install (API-based evaluation + EdgeTAM segmentation)
+
+```bash
+uv sync
+```
+
+### Individual extras
+
+```bash
+uv sync --extra local-vlm   # adds Qwen3-VL for local VQA inference
+uv sync --extra viewer       # adds Streamlit viewer, matplotlib, Jupyter
+```
+
+The EdgeTAM checkpoint and its CUDA extension are built automatically by `uv sync` — no extra steps needed.
+
+### Alternative: pip install
+
+If you prefer plain pip over `uv`:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
 ## API Keys & Authentication
 
@@ -132,13 +155,16 @@ print(seg[0])
 
 > Make sure `OPENROUTER_API_KEY` and `HF_TOKEN` are set before running
 > (see [API Keys & Authentication](#api-keys--authentication) above).
+>
+> All commands below use `uv run` which automatically uses the project
+> virtual environment created by `uv sync`.
 
 ### VQA via OpenRouter
 
 Prompted split:
 
 ```bash
-python scripts/llm_evaluate_vqa.py \
+uv run python scripts/llm_evaluate_vqa.py \
   --benchmark data/colon-bench \
   --mode prompted \
   --model qwen3-vl-8b \
@@ -149,7 +175,7 @@ python scripts/llm_evaluate_vqa.py \
 Unprompted split:
 
 ```bash
-python scripts/llm_evaluate_vqa.py \
+uv run python scripts/llm_evaluate_vqa.py \
   --benchmark data/colon-bench \
   --mode unprompted \
   --model gpt-4o
@@ -158,7 +184,7 @@ python scripts/llm_evaluate_vqa.py \
 With the bundled skill prompt:
 
 ```bash
-python scripts/llm_evaluate_vqa.py \
+uv run python scripts/llm_evaluate_vqa.py \
   --benchmark data/colon-bench \
   --mode prompted \
   --model qwen3-vl-8b \
@@ -168,7 +194,7 @@ python scripts/llm_evaluate_vqa.py \
 ### VQA Locally With Qwen3-VL-8B
 
 ```bash
-python scripts/llm_evaluate_vqa.py \
+uv run --extra local-vlm python scripts/llm_evaluate_vqa.py \
   --benchmark data/colon-bench \
   --mode prompted \
   --local \
@@ -181,7 +207,7 @@ Only `HF_TOKEN` is needed (no OpenRouter key required).
 ### Classification
 
 ```bash
-python scripts/llm_evaluate_cls.py \
+uv run python scripts/llm_evaluate_cls.py \
   --benchmark data/colon-bench \
   --model qwen3-vl-8b \
   --parallel \
@@ -191,7 +217,7 @@ python scripts/llm_evaluate_cls.py \
 ### Detection
 
 ```bash
-python scripts/llm_evaluate_det_seg.py \
+uv run python scripts/llm_evaluate_det_seg.py \
   --benchmark data/colon-bench \
   --model qwen3-vl-8b \
   --frames-count 3 \
@@ -204,7 +230,7 @@ python scripts/llm_evaluate_det_seg.py \
 Run detection first, then segmentation:
 
 ```bash
-python scripts/llm_evaluate_det_seg.py \
+uv run python scripts/llm_evaluate_det_seg.py \
   --benchmark data/colon-bench \
   --model qwen3-vl-8b \
   --seg \
@@ -225,16 +251,16 @@ This repo ships canonical public result JSONs in:
 The pre-generated public figures are in `plots/`. To replot from the shipped JSONs:
 
 ```bash
-python scripts/plot_vqa_accuracy.py \
+uv run python scripts/plot_vqa_accuracy.py \
   --save plots/vqa_accuracy_prompted.pdf plots/vqa_accuracy_unprompted.pdf
 
-python scripts/plot_classification_metrics.py \
+uv run python scripts/plot_classification_metrics.py \
   --save plots/cls_accuracy.pdf plots/cls_prf1.pdf
 
-python scripts/plot_detection_metrics.py \
+uv run python scripts/plot_detection_metrics.py \
   --save plots/detection_metrics.pdf
 
-python scripts/plot_segmentation_metrics.py \
+uv run python scripts/plot_segmentation_metrics.py \
   --save plots/segmentation_metrics.pdf
 ```
 
@@ -243,7 +269,7 @@ python scripts/plot_segmentation_metrics.py \
 Run the bundled viewer from the repo root:
 
 ```bash
-streamlit run viewer/visualize_benchmark.py -- --benchmark data/colon-bench --mode vqa_prompted
+uv run --extra viewer streamlit run viewer/visualize_benchmark.py -- --benchmark data/colon-bench --mode vqa_prompted
 ```
 
 Notes:

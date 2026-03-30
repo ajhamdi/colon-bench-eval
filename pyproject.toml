@@ -1,0 +1,49 @@
+[project]
+name = "colon-bench-eval"
+version = "0.1.0"
+description = "Evaluation toolkit for the Colon-Bench colonoscopy video benchmark"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+    # Core evaluation runtime
+    "huggingface-hub>=0.31.0",
+    "datasets>=3.0.0",
+    "litellm>=1.0.0",
+    "numpy>=1.24.4",
+    "pillow>=9.4.0",
+    "opencv-python>=4.7.0",
+    "tqdm>=4.66.1",
+    "python-dotenv>=1.0.0",
+    # Torch (required by EdgeTAM and evaluation scripts)
+    "torch>=2.3.1",
+    "torchvision>=0.18.1",
+    # Vendored EdgeTAM (CUDA connected-components extension built automatically)
+    "EdgeTAM",
+]
+
+[project.optional-dependencies]
+local-vlm = [
+    "transformers>=4.45.0",
+    "accelerate>=0.34.0",
+    "qwen-vl-utils>=0.0.8",
+]
+viewer = [
+    "streamlit>=1.52.0",
+    "imageio[ffmpeg]>=2.31.0",
+    "matplotlib>=3.9.1",
+    "jupyter>=1.0.0",
+]
+all = [
+    "colon-bench-eval[local-vlm,viewer]",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.uv.sources]
+EdgeTAM = { path = "edgetam", editable = true }
