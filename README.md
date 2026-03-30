@@ -16,6 +16,37 @@
 - **Binary lesion classification**
 - **Detection** + **EdgeTAM-based segmentation**
 
+## Benchmark Preview
+
+These figures give a quick visual snapshot of the benchmark's multi-task evaluation coverage across VQA, classification, and segmentation.
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="plots/vqa_accuracy_prompted.png" alt="VQA accuracy prompted" width="100%">
+      <br>
+      <sub><b>VQA</b> - prompted split</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="plots/vqa_accuracy_unprompted.png" alt="VQA accuracy unprompted" width="100%">
+      <br>
+      <sub><b>VQA</b> - unprompted split</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="plots/cls_accuracy.png" alt="Classification accuracy" width="100%">
+      <br>
+      <sub><b>Classification</b> - lesion accuracy</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="plots/segmentation_metrics.png" alt="Segmentation metrics" width="100%">
+      <br>
+      <sub><b>Segmentation</b> - IoU and Dice metrics</sub>
+    </td>
+  </tr>
+</table>
+
 
 ## Dataset Summary
 
@@ -123,10 +154,10 @@ Videos are streamed directly from Hugging Face Hub — no separate storage setup
 
 ## Supported Models
 
-### OpenRouter Models (API-based)
+### [OpenRouter](https://openrouter.ai/) Models (API-based)
 
 All evaluation scripts accept `--model <alias>` with any of the aliases below.
-You can also pass a raw OpenRouter slug (e.g. `openai/gpt-4o`) directly.
+You can also pass a raw [OpenRouter](https://openrouter.ai/) slug (e.g. `openai/gpt-4o`) directly.
 
 | Alias | Provider / Model | Video support |
 |---|---|:---:|
@@ -138,7 +169,6 @@ You can also pass a raw OpenRouter slug (e.g. `openai/gpt-4o`) directly.
 | `seed-1.6` | ByteDance Seed 1.6 | yes |
 | `seed-1.6-flash` | ByteDance Seed 1.6 Flash | yes |
 | `glm-4.6v` | Z-AI GLM-4.6V | yes |
-| `nemotron-nano-12b-v2-vl-free` | NVIDIA Nemotron Nano 12B v2 VL (free) | yes |
 | `qwen3-vl-8b` | Qwen3-VL 8B Instruct | yes |
 | `qwen3-vl-32b` | Qwen3-VL 32B Instruct | yes |
 | `qwen3-vl-235b` | Qwen3-VL 235B-A22B Instruct | yes |
@@ -153,7 +183,6 @@ You can also pass a raw OpenRouter slug (e.g. `openai/gpt-4o`) directly.
 | `gemini-3-pro-preview` | Google Gemini 3 Pro Preview | yes |
 | `gemini-3.1-pro-preview` | Google Gemini 3.1 Pro Preview | yes |
 | `gemini-3.1-flash-lite-preview` | Google Gemini 3.1 Flash Lite Preview | yes |
-| `nova-premier` | Amazon Nova Premier v1 | yes |
 
 Models without video support use frame-based evaluation (frames are extracted and sent as images).
 
@@ -168,7 +197,7 @@ Any **Qwen3-VL** checkpoint works via `--local-model-id`; larger variants auto-s
 | `Qwen/Qwen3-VL-32B-Instruct` | 32B | ~65 GB VRAM or multi-GPU |
 | `Qwen/Qwen3-VL-235B-A22B-Instruct` | 235B (MoE, 22B active) | Multi-GPU |
 
-Only `HF_TOKEN` is required (no OpenRouter key). Other model families are not supported — the backend uses `Qwen3VLForConditionalGeneration`.
+Only `HF_TOKEN` is required (no [OpenRouter](https://openrouter.ai/) key). Other model families from hugging face transformer models can be supported with mimimal adjustmenst to the code based.  
 
 To verify access manually:
 
@@ -208,7 +237,7 @@ print(seg[0])
 > All commands below use `uv run` which automatically uses the project
 > virtual environment created by `uv sync`.
 
-### VQA via OpenRouter
+### VQA via [OpenRouter](https://openrouter.ai/)
 
 Prompted split:
 
@@ -251,7 +280,7 @@ uv run --extra local-vlm python scripts/llm_evaluate_vqa.py \
 ```
 
 The local path downloads videos from the dataset on demand when a local `videos/` directory is not present.
-Only `HF_TOKEN` is needed (no OpenRouter key required).
+Only `HF_TOKEN` is needed (no [OpenRouter](https://openrouter.ai/) key required).
 
 ### Classification
 
@@ -312,23 +341,6 @@ uv run python scripts/plot_detection_metrics.py \
 uv run python scripts/plot_segmentation_metrics.py \
   --save plots/segmentation_metrics.pdf
 ```
-
-<details>
-<summary><b>View pre-generated result plots</b></summary>
-
-**VQA — Prompted**
-![VQA accuracy (prompted)](plots/vqa_accuracy_prompted.png)
-
-**VQA — Unprompted**
-![VQA accuracy (unprompted)](plots/vqa_accuracy_unprompted.png)
-
-**Classification accuracy**
-![Classification accuracy](plots/cls_accuracy.png)
-
-**Segmentation metrics**
-![Segmentation metrics](plots/segmentation_metrics.png)
-
-</details>
 
 ## Streamlit Viewer
 
