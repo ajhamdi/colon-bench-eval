@@ -1,9 +1,9 @@
 # Colon-Bench: Colonoscopy Video Understanding Benchmark for MLLMs 
 
 <p align="center">
+  <a href="https://abdullahamdi.com/colon-bench/"><img src="https://img.shields.io/badge/Website-Colon--Bench-blue" alt="Website"></a>
   <a href="https://arxiv.org/abs/2603.25645"><img src="https://img.shields.io/badge/arXiv-2603.25645-b31b1b.svg" alt="arXiv"></a>
   <a href="https://huggingface.co/datasets/ajhamdi/colon-bench"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow" alt="HF Dataset"></a>
-  <a href="https://abdullahamdi.com/colon-bench"><img src="https://img.shields.io/badge/Project-Page-blue" alt="Project Page"></a>
   <a href="https://github.com/ajhamdi/colon-bench-eval"><img src="https://img.shields.io/github/stars/ajhamdi/colon-bench-eval?style=social" alt="GitHub Stars"></a>
   <a href="https://github.com/ajhamdi/colon-bench-eval/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-CC--BY--4.0-green.svg" alt="License"></a>
 </p>
