@@ -323,8 +323,28 @@ uv run --extra viewer streamlit run viewer/visualize_benchmark.py -- --benchmark
 
 Notes:
 
-- VQA, classification, and detection browsing work from the shipped benchmark JSONs plus a local `videos/` directory if you want playable clips.
-- Segmentation browsing still expects local mask/frame assets; this viewer path has only been cleaned up for public release, not fully reworked to stream masks directly from Hugging Face.
+- Modes: **VQA** (prompted and unprompted), **classification**, and **segmentation** (detection is not shown in the viewer).
+- Uses the shipped benchmark JSONs under `data/colon-bench/`. Clips resolve from a local `videos/` directory when present; otherwise they are downloaded from the Hugging Face dataset (set `HF_TOKEN` or run `hf auth login` for gated access).
+- **Segmentation** builds an overlaid video from the benchmark clip plus ground-truth masks: assets are pulled from Hugging Face when not already on disk, with parallel mask downloads for faster first-time loading.
+
+## Optional: Pre-download the dataset (faster repeat runs)
+
+By default, videos and masks are fetched **on demand** (one file or a small batch per request). To avoid repeated network hits during Streamlit browsing, notebook exploration, or evaluation runs, you can **pre-download the full dataset** into the Hugging Face Hub cache once.
+
+**Put the cache on a large or fast disk** by setting `HF_HOME` before any Python or CLI command (default is `~/.cache/huggingface`). Hub downloads land under `$HF_HOME/hub`. To move only the file cache (not other HF data), set `HUGGINGFACE_HUB_CACHE` instead. All `huggingface_hub` usage in this repo respects these variables:
+
+```bash
+export HF_HOME=/path/to/your/hf_cache   # optional
+export HF_TOKEN=hf_...                   # required for the gated dataset
+```
+
+**Warm the cache** with the Hugging Face CLI (same environment as above). This pulls the full dataset into the Hub cache so later calls resolve locally:
+
+```bash
+hf download ajhamdi/colon-bench --repo-type dataset --max-workers 16
+```
+
+After this finishes, the Streamlit viewer, `notebooks/explore_colon_bench.ipynb`, and the `scripts/llm_evaluate_*.py` pipelines hit the cache instead of downloading each asset on demand. Dataset size is large (~81 GB of video alone); plan disk space accordingly.
 
 ## Citation
 

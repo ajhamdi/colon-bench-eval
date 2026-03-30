@@ -13,17 +13,18 @@ Primary usage:
 
 Mode examples:
     streamlit run visualize_benchmark.py -- --benchmark /path/to/data/colon-bench --mode classification
-    streamlit run visualize_benchmark.py -- --benchmark /path/to/data/colon-bench --mode detection
     streamlit run visualize_benchmark.py -- --benchmark /path/to/data/colon-bench --mode segmentation
 """
 
 import argparse
+import concurrent.futures
 import hashlib
 import json
 import os
 import subprocess
 import sys
 import tempfile
+from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
 import cv2
@@ -31,32 +32,34 @@ import numpy as np
 import streamlit as st
 import streamlit.components.v1 as components
 
-from constants import BBOX_COLORS_BGR, DEFAULT_CLIP_FPS, MASK_ALPHA, MASK_COLOR_BGR
+from constants import DEFAULT_CLIP_FPS, MASK_ALPHA, MASK_COLOR_BGR
+
+_SRC_DIR = str(Path(__file__).resolve().parent.parent / "src")
+if _SRC_DIR not in sys.path:
+    sys.path.insert(0, _SRC_DIR)
+
+from colonbench_eval.hf_video import HFDatasetAssetResolver  # noqa: E402
 
 
 # ========================= CONSTANTS =========================================
 
-MODE_ORDER = ["vqa_prompted", "vqa_unprompted", "classification", "detection", "segmentation"]
+MODE_ORDER = ["vqa_prompted", "vqa_unprompted", "classification", "segmentation"]
 MODE_TO_FILENAME = {
     "vqa_prompted": "benchmark_vqa_prompted.json",
     "vqa_unprompted": "benchmark_vqa_unprompted.json",
     "classification": "benchmark_cls.json",
-    "detection": "benchmark_detection.json",
     "segmentation": "benchmark_segmentation.json",
 }
 MODE_LABELS = {
     "vqa_prompted": "VQA Prompted",
     "vqa_unprompted": "VQA Unprompted",
     "classification": "Classification",
-    "detection": "Detection",
     "segmentation": "Segmentation",
 }
 QUIZ_MODES = {"vqa_prompted", "vqa_unprompted", "classification"}
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_BENCHMARK_DIR = os.path.join(PROJECT_ROOT, "data", "colon-bench")
-DEFAULT_REAL_COLON_DIR = os.path.join(PROJECT_ROOT, "data", "REAL-colon")
-
 TEMP_VIDEO_DIR = os.path.join(tempfile.gettempdir(), "benchmark_viewer_videos")
 os.makedirs(TEMP_VIDEO_DIR, exist_ok=True)
 
@@ -69,7 +72,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--benchmark",
         default=None,
-        help="Path to colon-bench directory containing benchmark JSONs, videos/, masks/, and name_mapping.json",
+        help="Path to colon-bench directory containing benchmark JSONs (videos/masks streamed from HF)",
     )
     parser.add_argument(
         "--mode",
@@ -94,16 +97,10 @@ def parse_args() -> argparse.Namespace:
         help="Optional direct path to masks directory",
     )
     parser.add_argument(
-        "--name-mapping",
+        "--hf-token",
         default=None,
-        dest="name_mapping",
-        help="Optional direct path to name_mapping.json",
-    )
-    parser.add_argument(
-        "--real-colon",
-        default=None,
-        dest="real_colon",
-        help="Path to REAL-colon parent directory containing {seq_id}_frames subdirectories",
+        dest="hf_token",
+        help="Optional HF token override. Otherwise uses HF_TOKEN env var or local login.",
     )
 
     try:
@@ -336,22 +333,6 @@ def ensure_mp4_name(video_id: Any) -> str:
     return f"{value}.mp4"
 
 
-def resolve_real_colon_dir(explicit_real_colon: Optional[str], benchmark_dir: Optional[str]) -> Optional[str]:
-    explicit = abs_path(explicit_real_colon)
-    candidates: List[str] = []
-    if explicit:
-        candidates.append(explicit)
-    if benchmark_dir:
-        sibling = os.path.join(os.path.dirname(benchmark_dir), "REAL-colon")
-        candidates.append(os.path.abspath(sibling))
-    candidates.append(DEFAULT_REAL_COLON_DIR)
-
-    for candidate in candidates:
-        if candidate and os.path.isdir(candidate):
-            return candidate
-    return explicit if explicit else DEFAULT_REAL_COLON_DIR
-
-
 def resolve_assets(args: argparse.Namespace) -> Dict[str, Any]:
     """Resolve benchmark directory, mode files, and related asset directories."""
     bench_dir = abs_path(args.benchmark)
@@ -390,14 +371,9 @@ def resolve_assets(args: argparse.Namespace) -> Dict[str, Any]:
         if os.path.isdir(candidate):
             masks_dir = candidate
 
-    mapping_path = abs_path(args.name_mapping)
-    if not mapping_path and bench_dir:
-        candidate = os.path.join(bench_dir, "name_mapping.json")
-        if os.path.isfile(candidate):
-            mapping_path = candidate
-
-    real_colon_dir = resolve_real_colon_dir(args.real_colon, bench_dir)
     available_modes = [m for m in MODE_ORDER if m in mode_files]
+
+    hf_resolver = HFDatasetAssetResolver(token=getattr(args, "hf_token", None))
 
     return {
         "benchmark_dir": bench_dir,
@@ -405,8 +381,7 @@ def resolve_assets(args: argparse.Namespace) -> Dict[str, Any]:
         "available_modes": available_modes,
         "videos_dir": videos_dir,
         "masks_dir": masks_dir,
-        "mapping_path": mapping_path,
-        "real_colon_dir": real_colon_dir,
+        "hf_resolver": hf_resolver,
     }
 
 
@@ -420,18 +395,6 @@ def load_json_list(path: str) -> List[Dict[str, Any]]:
         return []
     except (json.JSONDecodeError, FileNotFoundError, OSError):
         return []
-
-
-@st.cache_data(show_spinner=False)
-def load_name_mapping(path: str) -> Dict[str, Any]:
-    try:
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        if isinstance(data, dict):
-            return data
-        return {}
-    except (json.JSONDecodeError, FileNotFoundError, OSError):
-        return {}
 
 
 def normalize_vqa_records(records: List[Dict[str, Any]], mode: str) -> List[Dict[str, Any]]:
@@ -489,64 +452,6 @@ def normalize_classification_records(records: List[Dict[str, Any]]) -> List[Dict
                 "choices": choices,
                 "correct_answer": correct_answer,
                 "aux": {"lesion": lesion},
-            }
-        )
-    return items
-
-
-def _clean_bbox_track(bbox_track: Any) -> List[Dict[str, Any]]:
-    if not isinstance(bbox_track, list):
-        return []
-
-    clean_track: List[Dict[str, Any]] = []
-    for entry in bbox_track:
-        if not isinstance(entry, dict):
-            continue
-        frame_index = safe_int(entry.get("frame_index"))
-        bbox = entry.get("bbox")
-        if frame_index is None or not isinstance(bbox, list) or len(bbox) != 4:
-            continue
-        clean_bbox = []
-        valid = True
-        for value in bbox:
-            try:
-                clean_bbox.append(int(value))
-            except (TypeError, ValueError):
-                valid = False
-                break
-        if not valid:
-            continue
-        clean_track.append({"frame_index": frame_index, "bbox": clean_bbox})
-    clean_track.sort(key=lambda e: e["frame_index"])
-    return clean_track
-
-
-def normalize_detection_records(records: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    items: List[Dict[str, Any]] = []
-    for idx, rec in enumerate(records):
-        if not isinstance(rec, dict):
-            continue
-        video_id = ensure_mp4_name(rec.get("video_id"))
-        if not video_id:
-            continue
-
-        first_localization_frame = safe_int(rec.get("first_localization_frame"))
-        description = str(rec.get("description", "")).strip()
-        bbox_track = _clean_bbox_track(rec.get("bbox_track"))
-
-        items.append(
-            {
-                "item_id": f"detection_{idx}_{video_id}",
-                "mode": "detection",
-                "video_id": video_id,
-                "prompt_text": "Detection benchmark sample",
-                "choices": {},
-                "correct_answer": "",
-                "aux": {
-                    "description": description,
-                    "first_localization_frame": first_localization_frame,
-                    "bbox_track": bbox_track,
-                },
             }
         )
     return items
@@ -670,19 +575,6 @@ def _reencode_to_h264(src_path: str) -> str:
     return src_path
 
 
-def draw_bbox(frame: np.ndarray, bbox: List[int], color: Tuple[int, int, int]) -> np.ndarray:
-    output = frame.copy()
-    h, w = output.shape[:2]
-    x1, y1, x2, y2 = bbox
-    x1 = max(0, min(int(x1), w - 1))
-    y1 = max(0, min(int(y1), h - 1))
-    x2 = max(0, min(int(x2), w - 1))
-    y2 = max(0, min(int(y2), h - 1))
-    thickness = max(2, min(4, w // 220))
-    cv2.rectangle(output, (x1, y1), (x2, y2), color, thickness)
-    return output
-
-
 def apply_mask_overlay(
     frame: np.ndarray,
     mask: np.ndarray,
@@ -711,111 +603,13 @@ def load_binary_mask(mask_path: str) -> Optional[np.ndarray]:
     return (mask > 127).astype(np.uint8)
 
 
-def get_real_colon_frame_path(frames_dir: str, seq_id: str, global_frame_idx: int) -> Optional[str]:
-    candidates = [
-        f"{seq_id}_{global_frame_idx}.jpg",
-        f"{seq_id}_{global_frame_idx:06d}.jpg",
-        f"{seq_id}_{global_frame_idx}.0.jpg",
-        f"{seq_id}_{global_frame_idx:06d}.0.jpg",
-    ]
-    for name in candidates:
-        path = os.path.join(frames_dir, name)
-        if os.path.isfile(path):
-            return path
-    return None
-
-
-def generate_detection_overlay_video(item: Dict[str, Any], videos_dir: Optional[str]) -> Optional[str]:
-    video_id = item.get("video_id", "")
-    if not videos_dir:
-        return None
-    source_video_path = os.path.join(videos_dir, video_id)
-    if not os.path.isfile(source_video_path):
-        return None
-
-    bbox_track = item.get("aux", {}).get("bbox_track", [])
-    if not bbox_track:
-        return source_video_path
-
-    try:
-        stat = os.stat(source_video_path)
-        signature = {
-            "video_path": source_video_path,
-            "mtime": stat.st_mtime,
-            "size": stat.st_size,
-            "bbox_track": bbox_track,
-        }
-    except OSError:
-        return source_video_path
-
-    key = _short_hash(f"det_overlay_v1|{json.dumps(signature, sort_keys=True)}")
-    output_path = os.path.join(TEMP_VIDEO_DIR, f"det_{key}.mp4")
-    if os.path.isfile(output_path):
-        return output_path
-
-    track_by_frame: Dict[int, List[List[int]]] = {}
-    for entry in bbox_track:
-        frame_index = safe_int(entry.get("frame_index"))
-        bbox = entry.get("bbox")
-        if frame_index is None or not isinstance(bbox, list) or len(bbox) != 4:
-            continue
-        track_by_frame.setdefault(frame_index, []).append([int(v) for v in bbox])
-
-    cap = cv2.VideoCapture(source_video_path)
-    if not cap.isOpened():
-        return source_video_path
-
-    fps = cap.get(cv2.CAP_PROP_FPS)
-    if fps <= 0:
-        fps = float(DEFAULT_CLIP_FPS)
-
-    writer = None
-    frame_idx = 0
-    written = 0
-    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
-
-    try:
-        while True:
-            ok, frame = cap.read()
-            if not ok:
-                break
-
-            bboxes = track_by_frame.get(frame_idx, [])
-            for bbox in bboxes:
-                frame = draw_bbox(frame, bbox, BBOX_COLORS_BGR[0])
-
-            if writer is None:
-                h, w = frame.shape[:2]
-                writer = cv2.VideoWriter(output_path, fourcc, float(fps), (w, h))
-                if not writer.isOpened():
-                    writer = None
-                    break
-
-            writer.write(frame)
-            written += 1
-            frame_idx += 1
-    finally:
-        cap.release()
-        if writer is not None:
-            writer.release()
-
-    if written > 0 and os.path.isfile(output_path) and os.path.getsize(output_path) > 0:
-        return _reencode_to_h264(output_path)
-
-    try:
-        if os.path.isfile(output_path):
-            os.remove(output_path)
-    except OSError:
-        pass
-    return source_video_path
-
-
-def resolve_mask_path(
+def _resolve_mask_local(
     mask_record: Dict[str, Any],
     benchmark_dir: Optional[str],
     masks_dir: Optional[str],
     video_id: str,
 ) -> Optional[str]:
+    """Try to find a mask on local disk only (no network)."""
     path_value = str(mask_record.get("path", "")).strip()
     frame_index = safe_int(mask_record.get("frame_index"))
     candidates: List[str] = []
@@ -849,144 +643,113 @@ def resolve_mask_path(
     return None
 
 
+_MASK_DOWNLOAD_WORKERS = 16
+
+
 def build_segmentation_mask_index(item: Dict[str, Any], assets: Dict[str, Any]) -> Dict[int, str]:
     benchmark_dir = assets.get("benchmark_dir")
     masks_dir = assets.get("masks_dir")
+    hf_resolver: Optional[HFDatasetAssetResolver] = assets.get("hf_resolver")
     video_id = item.get("video_id", "")
     records = item.get("aux", {}).get("masks", [])
+
     index: Dict[int, str] = {}
+    need_hf: List[Tuple[int, str]] = []
+
     for rec in records:
         if not isinstance(rec, dict):
             continue
         frame_index = safe_int(rec.get("frame_index"))
         if frame_index is None:
             continue
-        mask_path = resolve_mask_path(rec, benchmark_dir, masks_dir, video_id)
-        if mask_path:
-            index[frame_index] = mask_path
+
+        local = _resolve_mask_local(rec, benchmark_dir, masks_dir, video_id)
+        if local:
+            index[frame_index] = local
+        else:
+            path_value = str(rec.get("path", "")).strip()
+            if path_value:
+                repo_path = path_value if path_value.startswith("masks/") else f"masks/{path_value}"
+                need_hf.append((frame_index, repo_path))
+
+    if need_hf and hf_resolver:
+        def _download(entry: Tuple[int, str]) -> Tuple[int, Optional[str]]:
+            fi, rp = entry
+            try:
+                return fi, hf_resolver.download_mask(rp, local_masks_dir=masks_dir)
+            except Exception:
+                return fi, None
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=_MASK_DOWNLOAD_WORKERS) as pool:
+            for fi, path in pool.map(_download, need_hf):
+                if path:
+                    index[fi] = path
+
     return index
 
 
-def _get_mapping_entry(mapping: Dict[str, Any], video_id: str) -> Optional[Dict[str, Any]]:
-    if video_id in mapping and isinstance(mapping[video_id], dict):
-        return mapping[video_id]
-    fallback = ensure_mp4_name(video_id)
-    if fallback in mapping and isinstance(mapping[fallback], dict):
-        return mapping[fallback]
-    return None
-
-
-def _mapping_window_key(entry: Dict[str, Any]) -> Optional[str]:
-    seq_id = str(entry.get("seq_id", "")).strip()
-    f_b = safe_int(entry.get("f_b"))
-    f_e = safe_int(entry.get("f_e"))
-    if not seq_id or f_b is None or f_e is None:
+def _download_video_from_hf(video_id: str, assets: Dict[str, Any]) -> Optional[str]:
+    hf_resolver: Optional[HFDatasetAssetResolver] = assets.get("hf_resolver")
+    if not hf_resolver or not video_id:
         return None
-    return f"{seq_id}_{f_b}_{f_e}"
+    try:
+        return hf_resolver.download_video(video_id, local_videos_dir=assets.get("videos_dir"))
+    except Exception:
+        return None
 
 
-@st.cache_data(show_spinner=False)
-def build_window_to_prompted_video_index(mapping_path: str, prompted_benchmark_path: str) -> Dict[str, str]:
-    """
-    Build window_key -> prompted_video_id from name_mapping + benchmark_vqa_prompted.
-
-    This lets detection records reuse the exact MP4 IDs used by prompted VQA.
-    """
-    mapping = load_name_mapping(mapping_path)
-    prompted_records = load_json_list(prompted_benchmark_path)
-    prompted_video_ids = {
-        ensure_mp4_name(rec.get("video"))
-        for rec in prompted_records
-        if isinstance(rec, dict) and rec.get("video")
-    }
-
-    index: Dict[str, str] = {}
-    for video_id in sorted(prompted_video_ids):
-        entry = _get_mapping_entry(mapping, video_id)
-        if not entry:
-            continue
-        window_key = _mapping_window_key(entry)
-        if window_key and window_key not in index:
-            index[window_key] = video_id
-    return index
-
-
-def resolve_detection_video_to_prompted(video_id: str, assets: Dict[str, Any]) -> str:
-    """
-    Map a detection video ID to the corresponding VQA prompted MP4 ID by window key.
-    """
-    normalized = ensure_mp4_name(video_id)
-    mapping_path = assets.get("mapping_path")
-    prompted_path = assets.get("mode_files", {}).get("vqa_prompted")
-    if not mapping_path or not prompted_path:
-        return normalized
-    if not os.path.isfile(mapping_path) or not os.path.isfile(prompted_path):
-        return normalized
-
-    mapping = load_name_mapping(mapping_path)
-    entry = _get_mapping_entry(mapping, normalized)
-    if not entry:
-        return normalized
-
-    window_key = _mapping_window_key(entry)
-    if not window_key:
-        return normalized
-
-    window_to_prompted = build_window_to_prompted_video_index(mapping_path, prompted_path)
-    return window_to_prompted.get(window_key, normalized)
+def _resolve_base_video(video_id: str, assets: Dict[str, Any]) -> Optional[str]:
+    """Find the base video locally or download from HF."""
+    videos_dir = assets.get("videos_dir")
+    if videos_dir:
+        candidate = os.path.join(videos_dir, video_id)
+        if os.path.isfile(candidate):
+            return candidate
+    return _download_video_from_hf(video_id, assets)
 
 
 def generate_segmentation_overlay_video(item: Dict[str, Any], assets: Dict[str, Any]) -> Optional[str]:
-    mapping_path = assets.get("mapping_path")
-    real_colon_dir = assets.get("real_colon_dir")
+    """Download video + masks from HF, overlay masks on frames, return H.264 video."""
     video_id = item.get("video_id", "")
-    if not mapping_path or not os.path.isfile(mapping_path) or not real_colon_dir or not os.path.isdir(real_colon_dir):
-        return None
-
-    mapping = load_name_mapping(mapping_path)
-    entry = _get_mapping_entry(mapping, video_id)
-    if not entry:
-        return None
-
-    seq_id = str(entry.get("seq_id", "")).strip()
-    f_b = safe_int(entry.get("f_b"))
-    f_e = safe_int(entry.get("f_e"))
-    if not seq_id or f_b is None or f_e is None or f_e < f_b:
-        return None
-
-    frames_dir = os.path.join(real_colon_dir, f"{seq_id}_frames")
-    if not os.path.isdir(frames_dir):
+    if not video_id:
         return None
 
     mask_index = build_segmentation_mask_index(item, assets)
-    sig_data = {
-        "video_id": video_id,
-        "seq_id": seq_id,
-        "f_b": f_b,
-        "f_e": f_e,
-        "masks": sorted((k, v) for k, v in mask_index.items()),
-    }
-    cache_key = _short_hash(f"seg_overlay_v1|{json.dumps(sig_data, sort_keys=True)}")
+
+    source_video_path = _resolve_base_video(video_id, assets)
+    if not source_video_path:
+        return None
+
+    if not mask_index:
+        return source_video_path
+
+    cache_key = _short_hash(
+        f"seg_overlay_v2|{video_id}|{json.dumps(sorted(mask_index.items()), sort_keys=True)}"
+    )
     output_path = os.path.join(TEMP_VIDEO_DIR, f"seg_{cache_key}.mp4")
     if os.path.isfile(output_path):
         return output_path
 
+    cap = cv2.VideoCapture(source_video_path)
+    if not cap.isOpened():
+        return source_video_path
+
+    fps = cap.get(cv2.CAP_PROP_FPS)
+    if fps <= 0:
+        fps = float(DEFAULT_CLIP_FPS)
+
     writer = None
+    frame_idx = 0
     written = 0
     fourcc = cv2.VideoWriter_fourcc(*"mp4v")
-    fps = float(DEFAULT_CLIP_FPS)
 
     try:
-        for global_idx in range(f_b, f_e + 1):
-            frame_path = get_real_colon_frame_path(frames_dir, seq_id, global_idx)
-            if not frame_path:
-                continue
-            frame = cv2.imread(frame_path)
-            if frame is None:
-                continue
+        while True:
+            ok, frame = cap.read()
+            if not ok:
+                break
 
-            local_idx = global_idx - f_b
-            mask_path = mask_index.get(local_idx)
+            mask_path = mask_index.get(frame_idx)
             if mask_path:
                 mask = load_binary_mask(mask_path)
                 if mask is not None:
@@ -994,13 +757,16 @@ def generate_segmentation_overlay_video(item: Dict[str, Any], assets: Dict[str, 
 
             if writer is None:
                 h, w = frame.shape[:2]
-                writer = cv2.VideoWriter(output_path, fourcc, fps, (w, h))
+                writer = cv2.VideoWriter(output_path, fourcc, float(fps), (w, h))
                 if not writer.isOpened():
                     writer = None
                     break
+
             writer.write(frame)
             written += 1
+            frame_idx += 1
     finally:
+        cap.release()
         if writer is not None:
             writer.release()
 
@@ -1012,40 +778,16 @@ def generate_segmentation_overlay_video(item: Dict[str, Any], assets: Dict[str, 
             os.remove(output_path)
     except OSError:
         pass
-    return None
+    return source_video_path
 
 
 def resolve_video_path_for_item(mode: str, item: Dict[str, Any], assets: Dict[str, Any]) -> Optional[str]:
-    videos_dir = assets.get("videos_dir")
     video_id = item.get("video_id", "")
 
     if mode == "segmentation":
         return generate_segmentation_overlay_video(item, assets)
 
-    if not videos_dir:
-        return None
-
-    if mode == "detection":
-        aux = item.get("aux", {})
-        # Detection should load MP4 exactly like VQA prompted; try resolved prompted ID first,
-        # then fall back to original detection ID if needed.
-        candidates = [
-            ensure_mp4_name(aux.get("resolved_prompted_video_id") or video_id),
-            ensure_mp4_name(aux.get("detection_video_id")),
-            ensure_mp4_name(video_id),
-        ]
-        for candidate in candidates:
-            if not candidate:
-                continue
-            candidate_path = os.path.join(videos_dir, candidate)
-            if os.path.isfile(candidate_path):
-                return candidate_path
-        return None
-
-    source_video_path = os.path.join(videos_dir, video_id)
-    if os.path.isfile(source_video_path):
-        return source_video_path
-    return None
+    return _resolve_base_video(video_id, assets)
 
 
 # ========================= SESSION STATE =====================================
@@ -1103,17 +845,6 @@ def load_items_for_mode(mode: str) -> List[Dict[str, Any]]:
         items = normalize_vqa_records(records, mode)
     elif mode == "classification":
         items = normalize_classification_records(records)
-    elif mode == "detection":
-        items = normalize_detection_records(records)
-        assets = st.session_state.bench_assets
-        for item in items:
-            original_video_id = ensure_mp4_name(item.get("video_id", ""))
-            prompted_video_id = resolve_detection_video_to_prompted(original_video_id, assets)
-            aux = dict(item.get("aux", {}))
-            aux["detection_video_id"] = original_video_id
-            aux["resolved_prompted_video_id"] = prompted_video_id
-            item["aux"] = aux
-            item["video_id"] = prompted_video_id
     elif mode == "segmentation":
         items = normalize_segmentation_records(records)
     else:
@@ -1213,11 +944,7 @@ def render_error_screen(assets: Dict[str, Any]) -> None:
             <code>benchmark_vqa_prompted.json</code>,
             <code>benchmark_vqa_unprompted.json</code>,
             <code>benchmark_cls.json</code>,
-            <code>benchmark_detection.json</code>,
-            <code>benchmark_segmentation.json</code>,
-            <code>videos/</code>,
-            <code>masks/</code>,
-            <code>name_mapping.json</code>
+            <code>benchmark_segmentation.json</code>
         </p>
         <p style="margin-top: 1rem; color: #666;">
             Modes discovered from your paths: <strong>{found_modes}</strong>
@@ -1240,12 +967,9 @@ def render_mode_instructions(mode: str) -> None:
         "classification": (
             "Review each clip and classify whether a lesion is present."
         ),
-        "detection": (
-            "Review detection targets with bounding-box overlays rendered from benchmark tracks."
-        ),
         "segmentation": (
-            "Review segmentation targets with mask overlays rendered from REAL-colon frames via name mapping. "
-            "This public viewer still expects local mask/frame assets for segmentation browsing."
+            "Review segmentation targets with mask overlays. "
+            "Videos and masks are streamed from the Hugging Face dataset."
         ),
     }
     text = instructions.get(mode, "")
@@ -1403,28 +1127,7 @@ def render_choice_review(item: Dict[str, Any], mode: str) -> None:
     )
 
 
-def render_detection_details(item: Dict[str, Any]) -> None:
-    aux = item.get("aux", {})
-    description = str(aux.get("description", "")).strip()
-    first_frame = aux.get("first_localization_frame")
-    bbox_count = len(aux.get("bbox_track", []))
-
-    content = description if description else "No lesion description available."
-    st.markdown(
-        f"""
-        <div class="question-box">
-            <div class="question-label">Detection Description</div>
-            {content}
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    c1, c2 = st.columns(2)
-    c1.metric("Tracked BBox Frames", bbox_count)
-    c2.metric("First Localization Frame", first_frame if first_frame is not None else "N/A")
-
-
-def render_segmentation_details(item: Dict[str, Any], assets: Dict[str, Any]) -> None:
+def render_segmentation_details(item: Dict[str, Any]) -> None:
     aux = item.get("aux", {})
     description = str(aux.get("description", "")).strip()
     masks = aux.get("masks", [])
@@ -1441,23 +1144,7 @@ def render_segmentation_details(item: Dict[str, Any], assets: Dict[str, Any]) ->
         unsafe_allow_html=True,
     )
 
-    seq_id = "N/A"
-    frame_range = "N/A"
-    mapping_path = assets.get("mapping_path")
-    if mapping_path and os.path.isfile(mapping_path):
-        mapping = load_name_mapping(mapping_path)
-        entry = _get_mapping_entry(mapping, item.get("video_id", ""))
-        if entry:
-            seq_id = str(entry.get("seq_id", "N/A"))
-            f_b = safe_int(entry.get("f_b"))
-            f_e = safe_int(entry.get("f_e"))
-            if f_b is not None and f_e is not None:
-                frame_range = f"{f_b} - {f_e}"
-
-    c1, c2, c3 = st.columns(3)
-    c1.metric("Mask Frames", mask_count)
-    c2.metric("Sequence", seq_id)
-    c3.metric("Global Frame Range", frame_range)
+    st.metric("Mask Frames", mask_count)
 
 
 def render_main_viewer(
@@ -1501,10 +1188,7 @@ def render_main_viewer(
         )
 
         video_path: Optional[str] = None
-        if mode == "segmentation":
-            with st.spinner("Preparing overlaid video..."):
-                video_path = resolve_video_path_for_item(mode, item, assets)
-        else:
+        with st.spinner("Loading video..."):
             video_path = resolve_video_path_for_item(mode, item, assets)
 
         if video_path and os.path.isfile(video_path):
@@ -1525,10 +1209,8 @@ def render_main_viewer(
     with col_content:
         if mode in QUIZ_MODES:
             render_choice_review(item, mode)
-        elif mode == "detection":
-            render_detection_details(item)
         elif mode == "segmentation":
-            render_segmentation_details(item, assets)
+            render_segmentation_details(item)
 
     st.markdown("---")
     nav_left, nav_mid, nav_right = st.columns([1, 2, 1])
