@@ -1,4 +1,4 @@
-# Colon-Bench Eval
+# Colon-Bench: Colonoscopy Video Understanding Benchmark for MLLMs 
 
 <p align="center">
   <a href="https://arxiv.org/abs/2603.25645"><img src="https://img.shields.io/badge/arXiv-2603.25645-b31b1b.svg" alt="arXiv"></a>
