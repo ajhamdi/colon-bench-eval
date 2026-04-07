@@ -6,6 +6,7 @@
   <a href="https://huggingface.co/datasets/ajhamdi/colon-bench"><img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Dataset-yellow" alt="HF Dataset"></a>
   <a href="https://github.com/ajhamdi/colon-bench-eval"><img src="https://img.shields.io/github/stars/ajhamdi/colon-bench-eval?style=social" alt="GitHub Stars"></a>
   <a href="https://github.com/ajhamdi/colon-bench-eval/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-CC--BY--4.0-green.svg" alt="License"></a>
+  <a href="https://abdullahamdi.com/colon-bench/#leaderboard"><img src="https://img.shields.io/badge/🏆_Leaderboard-Live-orange" alt="Leaderboard"></a>
 </p>
 
 **[Colon-Bench](https://abdullahamdi.com/colon-bench)** is a comprehensive, human-verified, multi-task video benchmark for colonoscopy understanding. It spans **14 lesion categories** (including polyps, ulcers, and bleeding), over **300,000 bounding boxes**, **213,000 segmentation masks**, and **133,000 words** of clinical descriptions.
@@ -416,6 +417,8 @@ After this finishes, the Streamlit viewer, `notebooks/explore_colon_bench.ipynb`
     <tr><td>Gemini 3 Pro</td><td><b>78.6</b></td><td><b>82.5</b></td><td>81.1</td><td>66.1</td><td>93.0</td><td>77.3</td><td>45.0</td><td>51.3</td></tr>
   </tbody>
 </table>
+
+**Want to add your model?** See [CONTRIBUTING.md](CONTRIBUTING.md) for how to submit results via PR. Merged results appear on the [live leaderboard](https://abdullahamdi.com/colon-bench/#leaderboard).
 
 ## Acknowledgements
 
