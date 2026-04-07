@@ -440,13 +440,3 @@ If you use [Colon-Bench](https://abdullahamdi.com/colon-bench), please cite:
   url={https://arxiv.org/abs/2603.25645}
 }
 ```
-
-## Links
-
-| | |
-|---|---|
-| Paper | [arXiv:2603.25645](https://arxiv.org/abs/2603.25645) |
-| Project page | [abdullahamdi.com/colon-bench](https://abdullahamdi.com/colon-bench) |
-| Dataset | [huggingface.co/datasets/ajhamdi/colon-bench](https://huggingface.co/datasets/ajhamdi/colon-bench) |
-| Code | [github.com/ajhamdi/colon-bench-eval](https://github.com/ajhamdi/colon-bench-eval) |
-| License | [CC-BY-4.0](LICENSE) |
