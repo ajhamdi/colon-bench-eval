@@ -376,6 +376,7 @@ hf download ajhamdi/colon-bench --repo-type dataset --max-workers 16
 After this finishes, the Streamlit viewer, `notebooks/explore_colon_bench.ipynb`, and the `scripts/llm_evaluate_*.py` pipelines hit the cache instead of downloading each asset on demand. Dataset size is large (~81 GB of video alone); plan disk space accordingly.
 
 ## 🏆 Colon-Bench Leaderboard
+**Want to add your model?** See [CONTRIBUTING.md](CONTRIBUTING.md) for how to submit results via PR. Merged results appear on the [live leaderboard](https://abdullahamdi.com/colon-bench/#leaderboard).
 
 <table>
   <thead>
@@ -417,8 +418,6 @@ After this finishes, the Streamlit viewer, `notebooks/explore_colon_bench.ipynb`
     <tr><td>Gemini 3 Pro</td><td><b>78.6</b></td><td><b>82.5</b></td><td>81.1</td><td>66.1</td><td>93.0</td><td>77.3</td><td>45.0</td><td>51.3</td></tr>
   </tbody>
 </table>
-
-**Want to add your model?** See [CONTRIBUTING.md](CONTRIBUTING.md) for how to submit results via PR. Merged results appear on the [live leaderboard](https://abdullahamdi.com/colon-bench/#leaderboard).
 
 ## Acknowledgements
 
