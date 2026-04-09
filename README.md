@@ -184,6 +184,8 @@ You can also pass a raw [OpenRouter](https://openrouter.ai/) slug (e.g. `openai/
 | `gemini-3-pro-preview` | Google Gemini 3 Pro Preview | yes |
 | `gemini-3.1-pro-preview` | Google Gemini 3.1 Pro Preview | yes |
 | `gemini-3.1-flash-lite-preview` | Google Gemini 3.1 Flash Lite Preview | yes |
+| `gemma-4-31b-it` | Google Gemma 4 31B IT | yes |
+| `gemma-4-26b-a4b-it` | Google Gemma 4 26B A4B IT | yes |
 
 Models without video support use frame-based evaluation (frames are extracted and sent as images).
 
@@ -413,7 +415,9 @@ After this finishes, the Streamlit viewer, `notebooks/explore_colon_bench.ipynb`
     <tr><td>Qwen3.5 397B</td><td>49.0</td><td>60.1</td><td>64.6</td><td>10.0</td><td>0.4</td><td>0.7</td><td>16.6</td><td>21.0</td></tr>
     <tr><td>GLM-4.6V</td><td>55.7</td><td>53.8</td><td>60.6</td><td>46.5</td><td>94.1</td><td>62.2</td><td>12.5</td><td>16.1</td></tr>
     <tr><td>Seed 1.6</td><td>62.9</td><td>72.0</td><td>82.0</td><td>85.0</td><td>58.7</td><td>69.4</td><td>12.6</td><td>16.1</td></tr>
-    <tr><td>Gemini 3.1 Flash Lite</td><td>69.2</td><td>67.7</td><td><b>85.1</b></td><td>72.6</td><td>90.8</td><td><b>80.7</b></td><td>37.4</td><td>43.4</td></tr>
+    <tr><td>Gemma 4 26B A4B IT</td><td>63.1</td><td>56.9</td><td><b>86.1</b></td><td>75.1</td><td>89.7</td><td><b>81.7</b></td><td>41.9</td><td>47.3</td></tr>
+    <tr><td>Gemma 4 31B IT</td><td>63.8</td><td>59.9</td><td>85.1</td><td>72.0</td><td>92.6</td><td>81.0</td><td>47.2</td><td>53.4</td></tr>
+    <tr><td>Gemini 3.1 Flash Lite</td><td>69.2</td><td>67.7</td><td>85.1</td><td>72.6</td><td>90.8</td><td>80.7</td><td>37.4</td><td>43.4</td></tr>
     <tr><td>Gemini 3 Flash</td><td>76.6</td><td>76.0</td><td>72.0</td><td>55.3</td><td>97.1</td><td>70.5</td><td><b>48.3</b></td><td><b>54.7</b></td></tr>
     <tr><td>Gemini 3 Pro</td><td><b>78.6</b></td><td><b>82.5</b></td><td>81.1</td><td>66.1</td><td>93.0</td><td>77.3</td><td>45.0</td><td>51.3</td></tr>
   </tbody>
