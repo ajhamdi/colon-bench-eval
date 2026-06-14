@@ -37,6 +37,8 @@ OPENROUTER_MODEL_ALIASES: Dict[str, Dict[str, Any]] = {
     "qwen-vl-max": {"id": "qwen/qwen-vl-max", "video": True},
     "qwen3.5-plus": {"id": "qwen/qwen3.5-plus-02-15", "video": True},
     "qwen3.5-397b-a17b": {"id": "qwen/qwen3.5-397b-a17b", "video": True},
+    "minimax-m3": {"id": "minimax/minimax-m3", "video": True},
+    "mimo-v2.5": {"id": "xiaomi/mimo-v2.5", "video": True},
     "gemini-2.5-flash": {"id": "google/gemini-2.5-flash", "video": True},
     "gemini-2.5-pro": {"id": "google/gemini-2.5-pro", "video": True},
     "gemini-2.5-flash-lite": {"id": "google/gemini-2.5-flash-lite", "video": True},
@@ -48,6 +50,13 @@ OPENROUTER_MODEL_ALIASES: Dict[str, Dict[str, Any]] = {
         "video": True,
     },
     "nova-premier": {"id": "amazon/nova-premier-v1", "video": True},
+    # Google Gemini models served through the native Gemini API (uses
+    # GEMINI_API_KEY instead of OPENROUTER_API_KEY).
+    "gemini-3.5-flash": {
+        "id": "gemini-3.5-flash",
+        "video": True,
+        "provider": "gemini",
+    },
 }
 
 
@@ -85,12 +94,19 @@ _CONCURRENCY_GUARD = threading.BoundedSemaphore(_OR_MAX_CONCURRENT)
 
 
 def resolve_openrouter_model(model_name: str) -> Tuple[str, bool]:
-    """Resolve a friendly model name into a liteLLM model slug + video capability."""
+    """Resolve a friendly model name into a liteLLM model slug + video capability.
+
+    Most aliases route through OpenRouter (``openrouter/<id>``). Aliases that set
+    ``"provider": "gemini"`` route through the native Gemini API
+    (``gemini/<id>``), which liteLLM authenticates with ``GEMINI_API_KEY``.
+    """
     lower = model_name.lower().strip()
     info = OPENROUTER_MODEL_ALIASES.get(lower)
     if info is not None:
-        return f"openrouter/{info['id']}", bool(info.get("video", False))
-    if lower.startswith("openrouter/"):
+        provider = info.get("provider", "openrouter")
+        prefix = "gemini" if provider == "gemini" else "openrouter"
+        return f"{prefix}/{info['id']}", bool(info.get("video", False))
+    if lower.startswith(("openrouter/", "gemini/")):
         return model_name, False
     return f"openrouter/{model_name}", False
 
@@ -215,6 +231,20 @@ def _get_api_key() -> str:
     return key
 
 
+def _get_gemini_api_key() -> str:
+    key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+    if not key:
+        raise ValueError("Set GEMINI_API_KEY to call native Gemini API models.")
+    return key
+
+
+def _api_key_for_model(resolved_model: str) -> str:
+    """Pick the right provider API key for an already-resolved liteLLM slug."""
+    if resolved_model.startswith("gemini/"):
+        return _get_gemini_api_key()
+    return _get_api_key()
+
+
 def _extract_text_from_content(content: Any) -> str:
     if isinstance(content, str):
         return content
@@ -277,7 +307,7 @@ def run_openrouter_completion(
                 response = litellm.completion(
                     model=resolved_model,
                     messages=messages,
-                    api_key=_get_api_key(),
+                    api_key=_api_key_for_model(resolved_model),
                 )
             break
         except Exception as exc:  # noqa: BLE001
@@ -316,7 +346,7 @@ def run_openrouter_text_completion(
                 response = litellm.completion(
                     model=resolved_model,
                     messages=messages,
-                    api_key=_get_api_key(),
+                    api_key=_api_key_for_model(resolved_model),
                 )
             break
         except Exception as exc:  # noqa: BLE001
