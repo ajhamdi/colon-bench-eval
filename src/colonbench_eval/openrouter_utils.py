@@ -296,9 +296,22 @@ def run_openrouter_completion(
     - `video_path` for an inline base64 video
     - `frames_b64` for frame-based fallback
     """
+    resolved_model, _ = resolve_openrouter_model(model)
+    if resolved_model.startswith("gemini/"):
+        from colonbench_eval.gemini_utils import run_gemini_media_completion
+
+        return run_gemini_media_completion(
+            resolved_model.split("gemini/", 1)[1],
+            prompt_text,
+            video_path=video_path,
+            video_url=video_url,
+            frames_b64=frames_b64,
+            use_video=use_video,
+            max_retries=max_retries,
+        )
+
     import litellm
 
-    resolved_model, _ = resolve_openrouter_model(model)
     content: List[Dict[str, Any]] = [{"type": "text", "text": prompt_text}]
     if use_video and video_url:
         content.append(_build_video_url_content(video_url))
@@ -343,9 +356,16 @@ def run_openrouter_text_completion(
     max_retries: int = _OR_MAX_RETRIES,
 ) -> Tuple[Any, str]:
     """Send a text-only prompt through liteLLM/OpenRouter."""
+    resolved_model, _ = resolve_openrouter_model(model)
+    if resolved_model.startswith("gemini/"):
+        from colonbench_eval.gemini_utils import run_gemini_text_completion
+
+        return run_gemini_text_completion(
+            resolved_model.split("gemini/", 1)[1], prompt_text, max_retries
+        )
+
     import litellm
 
-    resolved_model, _ = resolve_openrouter_model(model)
     messages = [{"role": "user", "content": prompt_text}]
 
     last_exc: Optional[Exception] = None

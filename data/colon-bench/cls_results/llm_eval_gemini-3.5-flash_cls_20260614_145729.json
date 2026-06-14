@@ -1,0 +1,91 @@
+{
+  "metadata": {
+    "model": "gemini-3.5-flash",
+    "last_updated": "2026-06-14T14:57:41.949453",
+    "total_records": 5,
+    "records_evaluated": 5,
+    "records_failed": 0,
+    "complete": true
+  },
+  "metrics": {
+    "accuracy": 0.8,
+    "precision": 0.8,
+    "recall": 1.0,
+    "f1": 0.888888888888889,
+    "total": 5,
+    "correct": 4,
+    "wrong": 1,
+    "confusion_matrix": {
+      "tp": 4,
+      "tn": 0,
+      "fp": 1,
+      "fn": 0
+    },
+    "predicted_distribution": {
+      "0": 0,
+      "1": 5
+    },
+    "token_usage": {
+      "total_prompt_tokens": 395,
+      "total_completion_tokens": 3087,
+      "total_tokens": 3482
+    }
+  },
+  "results": [
+    {
+      "record_id": "8904ecb9b9184bd880cc1df970c696f7.mp4",
+      "video_id": "8904ecb9b9184bd880cc1df970c696f7.mp4",
+      "correct_label": 0,
+      "predicted_label": 1,
+      "is_correct": false,
+      "raw_response": "1",
+      "extraction_tier": "regex_semantic",
+      "prompt_tokens": 79,
+      "completion_tokens": 421
+    },
+    {
+      "record_id": "412bac196e1d446f8dabfe8c09c7eac9.mp4",
+      "video_id": "412bac196e1d446f8dabfe8c09c7eac9.mp4",
+      "correct_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "raw_response": "1",
+      "extraction_tier": "regex_semantic",
+      "prompt_tokens": 79,
+      "completion_tokens": 388
+    },
+    {
+      "record_id": "884664d36e6d4d469ae68675000209d1.mp4",
+      "video_id": "884664d36e6d4d469ae68675000209d1.mp4",
+      "correct_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "raw_response": "1",
+      "extraction_tier": "regex_semantic",
+      "prompt_tokens": 79,
+      "completion_tokens": 923
+    },
+    {
+      "record_id": "2a60e0a321c2471eb87e1692ca07482e.mp4",
+      "video_id": "2a60e0a321c2471eb87e1692ca07482e.mp4",
+      "correct_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "raw_response": "1",
+      "extraction_tier": "regex_semantic",
+      "prompt_tokens": 79,
+      "completion_tokens": 589
+    },
+    {
+      "record_id": "3e9fa383ec004d7f836ae08b414d2935.mp4",
+      "video_id": "3e9fa383ec004d7f836ae08b414d2935.mp4",
+      "correct_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "raw_response": "1",
+      "extraction_tier": "regex_semantic",
+      "prompt_tokens": 79,
+      "completion_tokens": 766
+    }
+  ]
+}
