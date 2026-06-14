@@ -198,18 +198,45 @@ def upload_video_to_gemini(client: Any, video_path: str, verbose: bool = False) 
     return uploaded
 
 
-def cleanup_all_gemini_files(client: Any, verbose: bool = False) -> int:
-    """Delete every file currently stored under the Gemini File API."""
+def _call_with_timeout(func: Any, *args: Any, timeout: float = 15.0, **kwargs: Any) -> Any:
+    """Run *func* in a worker thread, raising TimeoutError if it overruns.
+
+    The google-genai client does not always enforce a network timeout, so an
+    occasional ``files.delete`` / ``files.list`` can hang forever. Bounding
+    every call keeps cleanup (including the atexit handler) from blocking
+    process exit and stalling the evaluation pipeline.
+    """
+    from concurrent.futures import ThreadPoolExecutor, TimeoutError as _FTimeout
+
+    with ThreadPoolExecutor(max_workers=1) as ex:
+        future = ex.submit(func, *args, **kwargs)
+        try:
+            return future.result(timeout=timeout)
+        except _FTimeout as exc:  # noqa: BLE001
+            raise TimeoutError(str(exc))
+
+
+def cleanup_all_gemini_files(
+    client: Any, verbose: bool = False, deadline_sec: float = 180.0
+) -> int:
+    """Best-effort delete of every file stored under the Gemini File API.
+
+    Bounded by *deadline_sec* and per-call timeouts so it can never hang the
+    caller. Used to free File API quota (20 GB free tier) between tasks.
+    """
     try:
-        files = list(client.files.list())
+        files = _call_with_timeout(lambda: list(client.files.list()), timeout=30.0)
     except Exception as exc:  # noqa: BLE001
         if verbose:
             print(f"  [WARN] Could not list Gemini files: {exc}")
         return 0
     deleted = 0
+    start = time.time()
     for f in files:
+        if time.time() - start > deadline_sec:
+            break
         try:
-            client.files.delete(name=f.name)
+            _call_with_timeout(client.files.delete, name=f.name, timeout=15.0)
             deleted += 1
         except Exception:  # noqa: BLE001
             pass
@@ -249,14 +276,17 @@ class GeminiFileCache:
                 self._cache[path_hash] = uploaded
             return uploaded
 
-    def clear(self) -> None:
+    def clear(self, deadline_sec: float = 120.0) -> None:
         with self._lock:
             files = list(self._cache.values())
             self._cache.clear()
             self._upload_locks.clear()
+        start = time.time()
         for file_ref in files:
+            if time.time() - start > deadline_sec:
+                break
             try:
-                self.client.files.delete(name=file_ref.name)
+                _call_with_timeout(self.client.files.delete, name=file_ref.name, timeout=15.0)
             except Exception:  # noqa: BLE001
                 pass
 
@@ -283,7 +313,14 @@ def _file_cache() -> GeminiFileCache:
     global _FILE_CACHE
     with _FILE_CACHE_LOCK:
         if _FILE_CACHE is None:
-            _FILE_CACHE = GeminiFileCache(_client())
+            client = _client()
+            # Free quota left over from previous tasks/crashes (bounded so it
+            # cannot hang). Safe because video-uploading tasks run one at a time.
+            try:
+                cleanup_all_gemini_files(client)
+            except Exception:  # noqa: BLE001
+                pass
+            _FILE_CACHE = GeminiFileCache(client)
             atexit.register(_FILE_CACHE.clear)
         return _FILE_CACHE
 
