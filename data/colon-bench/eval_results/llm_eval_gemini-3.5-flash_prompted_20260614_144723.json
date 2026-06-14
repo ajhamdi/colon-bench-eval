@@ -1,0 +1,84 @@
+{
+  "metadata": {
+    "model": "gemini-3.5-flash",
+    "mode": "prompted",
+    "backend": "openrouter",
+    "last_updated": "2026-06-14T14:47:35.332859",
+    "total_questions": 2,
+    "questions_evaluated": 2,
+    "questions_failed": 0,
+    "complete": true
+  },
+  "metrics": {
+    "accuracy": 0.0,
+    "total": 2,
+    "correct": 0,
+    "wrong": 2,
+    "per_answer_accuracy": {
+      "A": {
+        "total": 1,
+        "correct": 0,
+        "accuracy": 0.0
+      },
+      "E": {
+        "total": 1,
+        "correct": 0,
+        "accuracy": 0.0
+      }
+    },
+    "predicted_distribution": {
+      "B": 1,
+      "E": 1
+    },
+    "token_usage": {
+      "total_prompt_tokens": 312,
+      "total_completion_tokens": 1633,
+      "total_tokens": 1945
+    },
+    "video_stats": {
+      "total_videos": 2,
+      "videos_all_correct": 0,
+      "videos_all_wrong": 2
+    }
+  },
+  "results": [
+    {
+      "question_id": "04e049601a85",
+      "video": "be557513f84549288a134aa1fbd871ca.mp4",
+      "question": "At the 1.0-second mark of the video, which clinical finding is first clearly visible in the lumen?",
+      "choices": {
+        "A": "A flat mucosal lesion (Paris IIb)",
+        "B": "A sessile polyp (Paris Is)",
+        "C": "A subepithelial bulge",
+        "D": "No abnormality detected",
+        "E": "A pedunculated polyp"
+      },
+      "correct_answer": "E",
+      "predicted_answer": "B",
+      "is_correct": false,
+      "raw_response": "B",
+      "extraction_tier": "regex",
+      "prompt_tokens": 152,
+      "completion_tokens": 914
+    },
+    {
+      "question_id": "565b17b86142",
+      "video": "0bd0f86fc8d6429e8b15fde65a326d92.mp4",
+      "question": "What secondary clinical findings are visible centrally in the field of view throughout the clip?",
+      "choices": {
+        "A": "Thin, white, thread-like mucus strands",
+        "B": "Fine, red, speck-like blood droplets",
+        "C": "Large, clear, film-like water remnants",
+        "D": "Thick, green, clump-like stool particles",
+        "E": "Small, yellow, foam-like bile secretions"
+      },
+      "correct_answer": "A",
+      "predicted_answer": "E",
+      "is_correct": false,
+      "raw_response": "E",
+      "extraction_tier": "regex",
+      "prompt_tokens": 160,
+      "completion_tokens": 719
+    }
+  ]
+}

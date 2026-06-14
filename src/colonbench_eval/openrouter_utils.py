@@ -111,6 +111,17 @@ def resolve_openrouter_model(model_name: str) -> Tuple[str, bool]:
     return f"openrouter/{model_name}", False
 
 
+def uses_gemini_api(model_name: str) -> bool:
+    """True if the model is served by the native Gemini API (gemini/ prefix).
+
+    These models authenticate with GEMINI_API_KEY and cannot fetch remote
+    video URLs, so callers must send video inline (base64) rather than as a
+    remote ``video_url``.
+    """
+    resolved, _ = resolve_openrouter_model(model_name)
+    return resolved.startswith("gemini/")
+
+
 def list_openrouter_models() -> List[str]:
     return sorted(OPENROUTER_MODEL_ALIASES.keys())
 
