@@ -21,3 +21,6 @@ data/colon-bench/det_results/*_seg_pred_masks/
 
 # Secrets
 .env
+
+# Local run scripts / logs (not part of the repo)
+_runs/
