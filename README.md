@@ -195,7 +195,22 @@ You can also pass a raw [OpenRouter](https://openrouter.ai/) slug (e.g. `openai/
 | `gemma-4-31b-it` | Google Gemma 4 31B IT | yes |
 | `gemma-4-26b-a4b-it` | Google Gemma 4 26B A4B IT | yes |
 
-Models without video support use frame-based evaluation (frames are extracted and sent as images).
+Models without video support (e.g. the GPT family) use frame-based evaluation (frames are extracted and sent as images). For these models you can control image cost with `--use-frames --num-frames N` plus the following environment knobs:
+
+| Env var | Effect |
+|---|---|
+| `COLON_FRAME_MAX_SIZE` | Downscale each frame so its longest side ≤ this many pixels (e.g. `512`) |
+| `COLON_FRAME_AUTOSCALE=0` | Send exactly `--num-frames` frames (disable duration-based upscaling) |
+| `COLON_FRAME_DETAIL` | Image `detail` hint (`low`/`high`) for providers that honor it |
+| `COLON_REASONING_EFFORT` | Reasoning budget (`minimal`/`low`/…) to cap hidden reasoning tokens on reasoning models |
+
+Example (GPT-5.x, ~8 frames at 512px, minimal reasoning):
+
+```bash
+COLON_FRAME_MAX_SIZE=512 COLON_FRAME_AUTOSCALE=0 COLON_REASONING_EFFORT=minimal \
+  uv run python scripts/llm_evaluate_vqa.py --benchmark data/colon-bench \
+  --mode prompted --model gpt-5.2 --use-frames --num-frames 8 --parallel --max-workers 8
+```
 
 ### Native Gemini API Models
 
@@ -418,8 +433,6 @@ After this finishes, the Streamlit viewer, `notebooks/explore_colon_bench.ipynb`
     <tr><td>SAM 3</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>2.5</td><td>2.9</td></tr>
     <tr><td>GPT-4o</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>0.5</td><td>0.8</td></tr>
     <tr><td>Claude Opus 4.6</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>16.1</td><td>20.5</td></tr>
-    <tr><td>GPT-5.2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>30.7</td><td>36.5</td></tr>
-    <tr><td>GPT-5.4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>34.5</td><td>41.1</td></tr>
     <tr><td>Qwen3-VL 8B</td><td>32.9</td><td>38.3</td><td>34.4</td><td>34.4</td><td>100</td><td>51.2</td><td>10.4</td><td>13.1</td></tr>
     <tr><td>Seed 1.6 Flash</td><td>38.1</td><td>45.4</td><td>72.9</td><td><b>94.2</b></td><td>24.3</td><td>38.6</td><td>2.6</td><td>3.5</td></tr>
     <tr><td>Qwen-VL Max</td><td>39.1</td><td>45.4</td><td>65.6</td><td>0.0</td><td>0.0</td><td>0.0</td><td>25.6</td><td>29.6</td></tr>
@@ -432,6 +445,8 @@ After this finishes, the Streamlit viewer, `notebooks/explore_colon_bench.ipynb`
     <tr><td>MiniMax M3</td><td>51.2</td><td>63.5</td><td>54.4</td><td>40.9</td><td>71.7</td><td>52.1</td><td>—</td><td>—</td></tr>
     <tr><td>GLM-4.6V</td><td>55.7</td><td>53.8</td><td>60.6</td><td>46.5</td><td>94.1</td><td>62.2</td><td>12.5</td><td>16.1</td></tr>
     <tr><td>MiMo v2.5</td><td>56.0</td><td>58.6</td><td>73.7</td><td>57.8</td><td>87.1</td><td>69.5</td><td>—</td><td>—</td></tr>
+    <tr><td>GPT-5.4</td><td>59.4</td><td>70.8</td><td>84.6</td><td>77.0</td><td>78.7</td><td>77.8</td><td>34.5</td><td>41.1</td></tr>
+    <tr><td>GPT-5.2</td><td>62.0</td><td>71.4</td><td>83.4</td><td>74.2</td><td>79.4</td><td>76.7</td><td>30.7</td><td>36.5</td></tr>
     <tr><td>Seed 1.6</td><td>62.9</td><td>72.0</td><td>82.0</td><td>85.0</td><td>58.7</td><td>69.4</td><td>12.6</td><td>16.1</td></tr>
     <tr><td>Gemma 4 26B A4B IT</td><td>63.1</td><td>56.9</td><td><b>86.1</b></td><td>75.1</td><td>89.7</td><td><b>81.7</b></td><td>41.9</td><td>47.3</td></tr>
     <tr><td>Gemma 4 31B IT</td><td>63.8</td><td>59.9</td><td>85.1</td><td>72.0</td><td>92.6</td><td>81.0</td><td>47.2</td><td>53.4</td></tr>
