@@ -694,7 +694,17 @@ def init_edgetam_predictor(model_cfg: str, checkpoint: str):
     else:
         device = torch.device("cpu")
     print(f"  [EdgeTAM] device={device}")
-    return build_sam2_video_predictor(model_cfg, checkpoint, device=device)
+    overrides = []
+    img_size = os.getenv("COLON_SEG_IMAGE_SIZE")
+    if img_size:
+        # Lower the model input resolution to bound peak RAM on CPU-only hosts
+        # (memory scales with image_size^2 * num_frames). EdgeTAM resizes inputs
+        # to this size for tracking.
+        overrides.append(f"++model.image_size={int(img_size)}")
+        print(f"  [EdgeTAM] image_size override={img_size}")
+    return build_sam2_video_predictor(
+        model_cfg, checkpoint, device=device, hydra_overrides_extra=overrides
+    )
 
 
 def run_edgetam_masks_single_pass(
@@ -728,7 +738,13 @@ def run_edgetam_masks_single_pass(
         if total_frames <= 0:
             return {}
 
-        inference_state = predictor.init_state(video_path=frame_dir)
+        # offload_video_to_cpu keeps decoded frames as a CPU tensor; on CPU-only
+        # hosts this avoids a second device copy. (offload_state_to_cpu is left
+        # off — on CPU it only adds redundant copies and raises peak memory.)
+        inference_state = predictor.init_state(
+            video_path=frame_dir,
+            offload_video_to_cpu=True,
+        )
         predictor.reset_state(inference_state)
 
         ann_obj_id = 1
