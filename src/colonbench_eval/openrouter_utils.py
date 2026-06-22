@@ -37,6 +37,8 @@ OPENROUTER_MODEL_ALIASES: Dict[str, Dict[str, Any]] = {
     "qwen-vl-max": {"id": "qwen/qwen-vl-max", "video": True},
     "qwen3.5-plus": {"id": "qwen/qwen3.5-plus-02-15", "video": True},
     "qwen3.5-397b-a17b": {"id": "qwen/qwen3.5-397b-a17b", "video": True},
+    "minimax-m3": {"id": "minimax/minimax-m3", "video": True},
+    "mimo-v2.5": {"id": "xiaomi/mimo-v2.5", "video": True},
     "gemini-2.5-flash": {"id": "google/gemini-2.5-flash", "video": True},
     "gemini-2.5-pro": {"id": "google/gemini-2.5-pro", "video": True},
     "gemini-2.5-flash-lite": {"id": "google/gemini-2.5-flash-lite", "video": True},
@@ -48,6 +50,13 @@ OPENROUTER_MODEL_ALIASES: Dict[str, Dict[str, Any]] = {
         "video": True,
     },
     "nova-premier": {"id": "amazon/nova-premier-v1", "video": True},
+    # Google Gemini models served through the native Gemini API (uses
+    # GEMINI_API_KEY instead of OPENROUTER_API_KEY).
+    "gemini-3.5-flash": {
+        "id": "gemini-3.5-flash",
+        "video": True,
+        "provider": "gemini",
+    },
 }
 
 
@@ -83,16 +92,44 @@ _OR_BACKOFF_CAP = float(os.getenv("OPENROUTER_BACKOFF_CAP", "8.0"))
 _RATE_LIMITER = _RateLimiter(_OR_RPM)
 _CONCURRENCY_GUARD = threading.BoundedSemaphore(_OR_MAX_CONCURRENT)
 
+# Cost-control knobs for image-only models (e.g. GPT family) when sending frames.
+# `COLON_FRAME_DETAIL=low` makes the provider bill a flat ~85 tokens/frame;
+# `COLON_REASONING_EFFORT=minimal|low` caps hidden reasoning tokens on
+# reasoning-capable models. Both are read from the environment so the existing
+# call sites need no changes.
+_OR_FRAME_DETAIL = (os.getenv("COLON_FRAME_DETAIL") or "").strip() or None
+_OR_REASONING_EFFORT = (os.getenv("COLON_REASONING_EFFORT") or "").strip() or None
+_OR_FRAME_MAX_SIZE = int(os.getenv("COLON_FRAME_MAX_SIZE", "0") or "0") or None
+_OR_FRAME_AUTOSCALE = (os.getenv("COLON_FRAME_AUTOSCALE", "1").strip() != "0")
+
 
 def resolve_openrouter_model(model_name: str) -> Tuple[str, bool]:
-    """Resolve a friendly model name into a liteLLM model slug + video capability."""
+    """Resolve a friendly model name into a liteLLM model slug + video capability.
+
+    Most aliases route through OpenRouter (``openrouter/<id>``). Aliases that set
+    ``"provider": "gemini"`` route through the native Gemini API
+    (``gemini/<id>``), which liteLLM authenticates with ``GEMINI_API_KEY``.
+    """
     lower = model_name.lower().strip()
     info = OPENROUTER_MODEL_ALIASES.get(lower)
     if info is not None:
-        return f"openrouter/{info['id']}", bool(info.get("video", False))
-    if lower.startswith("openrouter/"):
+        provider = info.get("provider", "openrouter")
+        prefix = "gemini" if provider == "gemini" else "openrouter"
+        return f"{prefix}/{info['id']}", bool(info.get("video", False))
+    if lower.startswith(("openrouter/", "gemini/")):
         return model_name, False
     return f"openrouter/{model_name}", False
+
+
+def uses_gemini_api(model_name: str) -> bool:
+    """True if the model is served by the native Gemini API (gemini/ prefix).
+
+    These models authenticate with GEMINI_API_KEY and cannot fetch remote
+    video URLs, so callers must send video inline (base64) rather than as a
+    remote ``video_url``.
+    """
+    resolved, _ = resolve_openrouter_model(model_name)
+    return resolved.startswith("gemini/")
 
 
 def list_openrouter_models() -> List[str]:
@@ -116,8 +153,16 @@ def extract_video_frames(
     num_frames: int = 16,
     jpeg_quality: int = 85,
     auto_scale: bool = True,
+    max_size: Optional[int] = None,
 ) -> List[str]:
-    """Extract evenly spaced frames and return them as base64 JPEGs."""
+    """Extract evenly spaced frames and return them as base64 JPEGs.
+
+    ``max_size`` downscales each frame so its longest side is at most
+    ``max_size`` pixels (preserving aspect ratio). For image-only models such
+    as the GPT family this is used together with a ``"low"`` image detail to
+    keep cost flat at ~85 tokens/frame instead of tiling a full-resolution
+    frame into many 170-token tiles.
+    """
     capture = cv2.VideoCapture(video_path)
     if not capture.isOpened():
         raise RuntimeError(f"Cannot open video: {video_path}")
@@ -150,6 +195,16 @@ def extract_video_frames(
         ok, frame = capture.read()
         if not ok:
             continue
+        if max_size and max_size > 0:
+            h, w = frame.shape[:2]
+            longest = max(h, w)
+            if longest > max_size:
+                scale = max_size / float(longest)
+                frame = cv2.resize(
+                    frame,
+                    (max(1, int(round(w * scale))), max(1, int(round(h * scale)))),
+                    interpolation=cv2.INTER_AREA,
+                )
         _, buffer = cv2.imencode(".jpg", frame, encode_params)
         frames_b64.append(base64.b64encode(buffer).decode("utf-8"))
 
@@ -160,9 +215,19 @@ def extract_video_frames(
 class VideoFrameCache:
     """Thread-safe cache for extracted video frames."""
 
-    def __init__(self, num_frames: int = 16, jpeg_quality: int = 85):
+    def __init__(
+        self,
+        num_frames: int = 16,
+        jpeg_quality: int = 85,
+        auto_scale: Optional[bool] = None,
+        max_size: Optional[int] = None,
+    ):
         self.num_frames = num_frames
         self.jpeg_quality = jpeg_quality
+        # Fall back to the COLON_FRAME_* environment knobs when not specified,
+        # so cost controls apply without changing call sites.
+        self.auto_scale = _OR_FRAME_AUTOSCALE if auto_scale is None else auto_scale
+        self.max_size = max_size if max_size is not None else _OR_FRAME_MAX_SIZE
         self._cache: Dict[str, List[str]] = {}
         self._lock = threading.Lock()
 
@@ -176,6 +241,8 @@ class VideoFrameCache:
             video_path,
             num_frames=self.num_frames,
             jpeg_quality=self.jpeg_quality,
+            auto_scale=self.auto_scale,
+            max_size=self.max_size,
         )
         with self._lock:
             self._cache[key] = frames
@@ -198,14 +265,16 @@ def _build_video_url_content(video_url: str) -> Dict[str, Any]:
     return {"type": "video_url", "video_url": {"url": video_url}}
 
 
-def _build_frames_content(frames_b64: List[str]) -> List[Dict[str, Any]]:
-    return [
-        {
-            "type": "image_url",
-            "image_url": {"url": f"data:image/jpeg;base64,{frame_b64}"},
-        }
-        for frame_b64 in frames_b64
-    ]
+def _build_frames_content(
+    frames_b64: List[str], detail: Optional[str] = None
+) -> List[Dict[str, Any]]:
+    def _image_url(frame_b64: str) -> Dict[str, Any]:
+        image_url: Dict[str, Any] = {"url": f"data:image/jpeg;base64,{frame_b64}"}
+        if detail:
+            image_url["detail"] = detail
+        return {"type": "image_url", "image_url": image_url}
+
+    return [_image_url(frame_b64) for frame_b64 in frames_b64]
 
 
 def _get_api_key() -> str:
@@ -213,6 +282,20 @@ def _get_api_key() -> str:
     if not key:
         raise ValueError("Set OPENROUTER_API_KEY to call OpenRouter models.")
     return key
+
+
+def _get_gemini_api_key() -> str:
+    key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+    if not key:
+        raise ValueError("Set GEMINI_API_KEY to call native Gemini API models.")
+    return key
+
+
+def _api_key_for_model(resolved_model: str) -> str:
+    """Pick the right provider API key for an already-resolved liteLLM slug."""
+    if resolved_model.startswith("gemini/"):
+        return _get_gemini_api_key()
+    return _get_api_key()
 
 
 def _extract_text_from_content(content: Any) -> str:
@@ -255,18 +338,35 @@ def run_openrouter_completion(
     - `video_path` for an inline base64 video
     - `frames_b64` for frame-based fallback
     """
+    resolved_model, _ = resolve_openrouter_model(model)
+    if resolved_model.startswith("gemini/"):
+        from colonbench_eval.gemini_utils import run_gemini_media_completion
+
+        return run_gemini_media_completion(
+            resolved_model.split("gemini/", 1)[1],
+            prompt_text,
+            video_path=video_path,
+            video_url=video_url,
+            frames_b64=frames_b64,
+            use_video=use_video,
+            max_retries=max_retries,
+        )
+
     import litellm
 
-    resolved_model, _ = resolve_openrouter_model(model)
     content: List[Dict[str, Any]] = [{"type": "text", "text": prompt_text}]
     if use_video and video_url:
         content.append(_build_video_url_content(video_url))
     elif use_video and video_path:
         content.append(_build_video_content(video_path))
     elif frames_b64:
-        content.extend(_build_frames_content(frames_b64))
+        content.extend(_build_frames_content(frames_b64, detail=_OR_FRAME_DETAIL))
 
     messages = [{"role": "user", "content": content}]
+
+    extra_kwargs: Dict[str, Any] = {}
+    if _OR_REASONING_EFFORT:
+        extra_kwargs["reasoning_effort"] = _OR_REASONING_EFFORT
 
     last_exc: Optional[Exception] = None
     response = None
@@ -277,7 +377,8 @@ def run_openrouter_completion(
                 response = litellm.completion(
                     model=resolved_model,
                     messages=messages,
-                    api_key=_get_api_key(),
+                    api_key=_api_key_for_model(resolved_model),
+                    **extra_kwargs,
                 )
             break
         except Exception as exc:  # noqa: BLE001
@@ -302,9 +403,16 @@ def run_openrouter_text_completion(
     max_retries: int = _OR_MAX_RETRIES,
 ) -> Tuple[Any, str]:
     """Send a text-only prompt through liteLLM/OpenRouter."""
+    resolved_model, _ = resolve_openrouter_model(model)
+    if resolved_model.startswith("gemini/"):
+        from colonbench_eval.gemini_utils import run_gemini_text_completion
+
+        return run_gemini_text_completion(
+            resolved_model.split("gemini/", 1)[1], prompt_text, max_retries
+        )
+
     import litellm
 
-    resolved_model, _ = resolve_openrouter_model(model)
     messages = [{"role": "user", "content": prompt_text}]
 
     last_exc: Optional[Exception] = None
@@ -316,7 +424,7 @@ def run_openrouter_text_completion(
                 response = litellm.completion(
                     model=resolved_model,
                     messages=messages,
-                    api_key=_get_api_key(),
+                    api_key=_api_key_for_model(resolved_model),
                 )
             break
         except Exception as exc:  # noqa: BLE001

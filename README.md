@@ -122,6 +122,11 @@ You need two keys:
 |---|---|---|
 | `HF_TOKEN` | Access the gated Colon-Bench dataset | [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) |
 | `OPENROUTER_API_KEY` | API-based evaluation (VQA, classification, detection) | [openrouter.ai/keys](https://openrouter.ai/keys) |
+| `GEMINI_API_KEY` | Native Gemini API models (e.g. `gemini-3.5-flash`) | [aistudio.google.com/apikey](https://aistudio.google.com/apikey) |
+
+> `GEMINI_API_KEY` is only required when evaluating a native Gemini API model
+> (see [Native Gemini API Models](#native-gemini-api-models)). All other models
+> use `OPENROUTER_API_KEY`.
 
 [Colon-Bench](https://abdullahamdi.com/colon-bench) is public but gated — request access on the [dataset page](https://huggingface.co/datasets/ajhamdi/colon-bench), then provide your token below.
 
@@ -130,6 +135,7 @@ You need two keys:
 ```bash
 export OPENROUTER_API_KEY=sk-or-v1-...
 export HF_TOKEN=hf_...
+export GEMINI_API_KEY=...   # only for native Gemini API models
 ```
 
 **Option B — use a `.env` file** (convenient for repeated local use):
@@ -177,6 +183,8 @@ You can also pass a raw [OpenRouter](https://openrouter.ai/) slug (e.g. `openai/
 | `qwen-vl-max` | Qwen-VL Max | yes |
 | `qwen3.5-plus` | Qwen3.5 Plus | yes |
 | `qwen3.5-397b-a17b` | Qwen3.5 397B-A17B | yes |
+| `minimax-m3` | [MiniMax M3](https://openrouter.ai/minimax/minimax-m3) | yes |
+| `mimo-v2.5` | [Xiaomi MiMo v2.5](https://openrouter.ai/xiaomi/mimo-v2.5) | yes |
 | `gemini-2.5-flash` | Google Gemini 2.5 Flash | yes |
 | `gemini-2.5-pro` | Google Gemini 2.5 Pro | yes |
 | `gemini-2.5-flash-lite` | Google Gemini 2.5 Flash Lite | yes |
@@ -187,7 +195,30 @@ You can also pass a raw [OpenRouter](https://openrouter.ai/) slug (e.g. `openai/
 | `gemma-4-31b-it` | Google Gemma 4 31B IT | yes |
 | `gemma-4-26b-a4b-it` | Google Gemma 4 26B A4B IT | yes |
 
-Models without video support use frame-based evaluation (frames are extracted and sent as images).
+Models without video support (e.g. the GPT family) use frame-based evaluation (frames are extracted and sent as images). For these models you can control image cost with `--use-frames --num-frames N` plus the following environment knobs:
+
+| Env var | Effect |
+|---|---|
+| `COLON_FRAME_MAX_SIZE` | Downscale each frame so its longest side ≤ this many pixels (e.g. `512`) |
+| `COLON_FRAME_AUTOSCALE=0` | Send exactly `--num-frames` frames (disable duration-based upscaling) |
+| `COLON_FRAME_DETAIL` | Image `detail` hint (`low`/`high`) for providers that honor it |
+| `COLON_REASONING_EFFORT` | Reasoning budget (`minimal`/`low`/…) to cap hidden reasoning tokens on reasoning models |
+
+Example (GPT-5.x, ~8 frames at 512px, minimal reasoning):
+
+```bash
+COLON_FRAME_MAX_SIZE=512 COLON_FRAME_AUTOSCALE=0 COLON_REASONING_EFFORT=minimal \
+  uv run python scripts/llm_evaluate_vqa.py --benchmark data/colon-bench \
+  --mode prompted --model gpt-5.2 --use-frames --num-frames 8 --parallel --max-workers 8
+```
+
+### Native Gemini API Models
+
+These models are served through the **native Google Gemini API** (via `google-genai`) rather than OpenRouter, so their usage is billed to `GEMINI_API_KEY` instead of an OpenRouter account. Videos are uploaded through the Gemini File API. All evaluation scripts accept these aliases transparently.
+
+| Alias | Provider / Model | Video support |
+|---|---|:---:|
+| `gemini-3.5-flash` | [Google Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models) | yes |
 
 ### Local Models (GPU)
 
@@ -402,8 +433,6 @@ After this finishes, the Streamlit viewer, `notebooks/explore_colon_bench.ipynb`
     <tr><td>SAM 3</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>2.5</td><td>2.9</td></tr>
     <tr><td>GPT-4o</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>0.5</td><td>0.8</td></tr>
     <tr><td>Claude Opus 4.6</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>16.1</td><td>20.5</td></tr>
-    <tr><td>GPT-5.2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>30.7</td><td>36.5</td></tr>
-    <tr><td>GPT-5.4</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>34.5</td><td>41.1</td></tr>
     <tr><td>Qwen3-VL 8B</td><td>32.9</td><td>38.3</td><td>34.4</td><td>34.4</td><td>100</td><td>51.2</td><td>10.4</td><td>13.1</td></tr>
     <tr><td>Seed 1.6 Flash</td><td>38.1</td><td>45.4</td><td>72.9</td><td><b>94.2</b></td><td>24.3</td><td>38.6</td><td>2.6</td><td>3.5</td></tr>
     <tr><td>Qwen-VL Max</td><td>39.1</td><td>45.4</td><td>65.6</td><td>0.0</td><td>0.0</td><td>0.0</td><td>25.6</td><td>29.6</td></tr>
@@ -413,11 +442,16 @@ After this finishes, the Streamlit viewer, `notebooks/explore_colon_bench.ipynb`
     <tr><td>Qwen3-VL 235B</td><td>46.7</td><td>56.6</td><td>64.9</td><td>22.2</td><td>0.7</td><td>1.4</td><td>13.6</td><td>16.9</td></tr>
     <tr><td>Gemini 2.5 Flash Lite</td><td>47.8</td><td>46.8</td><td>52.3</td><td>42.3</td><td>95.9</td><td>58.7</td><td>19.9</td><td>24.3</td></tr>
     <tr><td>Qwen3.5 397B</td><td>49.0</td><td>60.1</td><td>64.6</td><td>10.0</td><td>0.4</td><td>0.7</td><td>16.6</td><td>21.0</td></tr>
+    <tr><td>MiniMax M3</td><td>51.2</td><td>63.5</td><td>54.4</td><td>40.9</td><td>71.7</td><td>52.1</td><td>—</td><td>—</td></tr>
     <tr><td>GLM-4.6V</td><td>55.7</td><td>53.8</td><td>60.6</td><td>46.5</td><td>94.1</td><td>62.2</td><td>12.5</td><td>16.1</td></tr>
+    <tr><td>MiMo v2.5</td><td>56.0</td><td>58.6</td><td>73.7</td><td>57.8</td><td>87.1</td><td>69.5</td><td>—</td><td>—</td></tr>
+    <tr><td>GPT-5.4</td><td>59.4</td><td>70.8</td><td>84.6</td><td>77.0</td><td>78.7</td><td>77.8</td><td>34.5</td><td>41.1</td></tr>
+    <tr><td>GPT-5.2</td><td>62.0</td><td>71.4</td><td>83.4</td><td>74.2</td><td>79.4</td><td>76.7</td><td>30.7</td><td>36.5</td></tr>
     <tr><td>Seed 1.6</td><td>62.9</td><td>72.0</td><td>82.0</td><td>85.0</td><td>58.7</td><td>69.4</td><td>12.6</td><td>16.1</td></tr>
     <tr><td>Gemma 4 26B A4B IT</td><td>63.1</td><td>56.9</td><td><b>86.1</b></td><td>75.1</td><td>89.7</td><td><b>81.7</b></td><td>41.9</td><td>47.3</td></tr>
     <tr><td>Gemma 4 31B IT</td><td>63.8</td><td>59.9</td><td>85.1</td><td>72.0</td><td>92.6</td><td>81.0</td><td>47.2</td><td>53.4</td></tr>
     <tr><td>Gemini 3.1 Flash Lite</td><td>69.2</td><td>67.7</td><td>85.1</td><td>72.6</td><td>90.8</td><td>80.7</td><td>37.4</td><td>43.4</td></tr>
+    <tr><td>Gemini 3.5 Flash</td><td>75.4</td><td>80.7</td><td>78.1</td><td>62.3</td><td>91.9</td><td>74.3</td><td>—</td><td>—</td></tr>
     <tr><td>Gemini 3 Flash</td><td>76.6</td><td>76.0</td><td>72.0</td><td>55.3</td><td>97.1</td><td>70.5</td><td><b>48.3</b></td><td><b>54.7</b></td></tr>
     <tr><td>Gemini 3 Pro</td><td><b>78.6</b></td><td><b>82.5</b></td><td>81.1</td><td>66.1</td><td>93.0</td><td>77.3</td><td>45.0</td><td>51.3</td></tr>
   </tbody>

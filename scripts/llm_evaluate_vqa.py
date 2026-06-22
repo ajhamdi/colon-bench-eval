@@ -61,6 +61,7 @@ from colonbench_eval.openrouter_utils import (  # noqa: E402
     resolve_openrouter_model,
     run_openrouter_completion,
     run_openrouter_text_completion,
+    uses_gemini_api,
 )
 
 
@@ -368,15 +369,33 @@ def evaluate_single_question_openrouter(
     frames_b64: Optional[List[str]] = None
 
     if effective_use_video:
-        try:
-            remote_video_url = asset_resolver.resolve_video_url(video_name)
-        except Exception as exc:  # noqa: BLE001
-            if verbose:
-                print(
-                    f"  [WARN] Q={question_id}: could not resolve remote video URL ({exc}); "
-                    "falling back to local frame extraction"
+        # Native Gemini API models cannot fetch remote URLs, so the video must
+        # be sent inline (base64). Download the local file instead of resolving
+        # a remote video_url. All other models use the efficient remote URL.
+        if uses_gemini_api(model):
+            try:
+                local_video_path = resolve_local_video_path(
+                    video_id=video_name,
+                    videos_dir=videos_dir,
+                    asset_resolver=asset_resolver,
                 )
-            effective_use_video = False
+            except Exception as exc:  # noqa: BLE001
+                if verbose:
+                    print(
+                        f"  [WARN] Q={question_id}: could not prepare inline video ({exc}); "
+                        "falling back to local frame extraction"
+                    )
+                effective_use_video = False
+        else:
+            try:
+                remote_video_url = asset_resolver.resolve_video_url(video_name)
+            except Exception as exc:  # noqa: BLE001
+                if verbose:
+                    print(
+                        f"  [WARN] Q={question_id}: could not resolve remote video URL ({exc}); "
+                        "falling back to local frame extraction"
+                    )
+                effective_use_video = False
 
     if not effective_use_video:
         try:
