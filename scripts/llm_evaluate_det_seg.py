@@ -612,6 +612,12 @@ def parse_detection_response(
     return out
 
 
+def model_uses_gemini_coordinates(model: str) -> bool:
+    """Gemini detection responses commonly use normalized 0-1000 coordinates."""
+    resolved_id, _ = resolve_openrouter_model(model)
+    return "gemini" in resolved_id.lower()
+
+
 def call_model_for_frame(
     *,
     model: str,
@@ -854,6 +860,7 @@ def evaluate_single_video_detection(
     gt_by_frame = build_frame_maps_from_detection_record(record, frame_indices)
     pred_by_frame: Dict[int, List[Dict[str, Any]]] = {fi: [] for fi in frame_indices}
     frame_results: List[Dict[str, Any]] = []
+    model_is_gemini = model_uses_gemini_coordinates(model)
 
     total_prompt_tokens = 0
     total_completion_tokens = 0
@@ -878,7 +885,7 @@ def evaluate_single_video_detection(
             raw_text=raw_response,
             width=int(f["width"]),
             height=int(f["height"]),
-            model_is_gemini=False,
+            model_is_gemini=model_is_gemini,
         )
         pred_by_frame[frame_idx] = preds
         frame_results.append(
