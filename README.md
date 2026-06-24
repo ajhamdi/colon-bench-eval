@@ -1,4 +1,4 @@
-# Colon-Bench: Colonoscopy Video Understanding Benchmark for MLLMs 
+# Colon-Bench: Colonoscopy Video Understanding Benchmark for MLLMs (MICCAI 2026)
 
 <p align="center">
   <a href="https://abdullahamdi.com/colon-bench/"><img src="https://img.shields.io/badge/Website-Colon--Bench-blue" alt="Website"></a>
@@ -468,13 +468,11 @@ The original unprocessed colonoscopy videos underlying Colon-Bench were sourced 
 If you use [Colon-Bench](https://abdullahamdi.com/colon-bench), please cite:
 
 ```bibtex
-@misc{hamdi2026colonbench,
-  title={Colon-Bench: An Agentic Workflow for Scalable Dense Lesion Annotation in Full-Procedure Colonoscopy Videos},
-  author={Abdullah Hamdi and Changchun Yang and Xin Gao},
-  year={2026},
-  eprint={2603.25645},
-  archivePrefix={arXiv},
-  primaryClass={eess.IV},
-  url={https://arxiv.org/abs/2603.25645}
+@InProceedings{ HamdiAbd_ColonBench_MICCAI2026,
+   author = { Hamdi, Abdullah AND Yang, Changchun AND Gao, Xin },
+   title = { { Colon-Bench: An Agentic Workflow for Scalable Dense Lesion Annotation in Full-Procedure Colonoscopy Videos } },
+   booktitle = {Medical Image Computing and Computer Assisted Intervention -- MICCAI 2026},
+   year = {2026},
+   publisher = {Springer Nature Switzerland},
 }
 ```
