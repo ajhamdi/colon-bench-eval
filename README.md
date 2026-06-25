@@ -72,6 +72,7 @@ These figures give a quick visual snapshot of the benchmark's multi-task evaluat
 - `scripts/plot_*.py`: public plotting scripts for the shipped result JSONs
 - `viewer/visualize_benchmark.py`: Streamlit benchmark browser
 - `skills/colon-skill/SKILL.md`: optional VQA skill/context file (works with both prompted and unprompted)
+- `skills/`: portable, domain-neutral engineering skills extracted from this codebase (MLLM detection, video input, provider/backend abstraction, fault-tolerant API runs, JSON checkpointing, interactive review app, cross-model plots, HF dataset build/upload, skill extraction from errors) — see `skills/README.md`
 - `data/colon-bench/`: benchmark JSONs and canonical result JSONs
 - `plots/`: pre-generated public plot assets
 - `edgetam/`: vendored [EdgeTAM](https://github.com/facebookresearch/EdgeTAM) source tree with bundled checkpoint
